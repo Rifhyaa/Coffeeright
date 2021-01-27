@@ -9,6 +9,9 @@ class Kategori extends CI_Controller
         parent::__construct();
         $this->load->model("Kategori_model");
         $this->load->library('form_validation');
+
+        // Cek User sudah login belum
+        is_logged_in();
     }
 
     /**

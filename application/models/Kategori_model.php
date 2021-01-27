@@ -69,6 +69,7 @@ class Kategori_model extends CI_Model
 
     /**
      * Ubah data kategori di db
+     * Status kategori menjadi 0
      */
     public function delete($id)
     {

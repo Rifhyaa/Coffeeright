@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class User extends CI_Controller
+class Admin extends CI_Controller
 {
     public function __construct()
     {
@@ -21,7 +21,7 @@ class User extends CI_Controller
         $data['title'] = 'Coffeeright - My Profile';
 
         $this->load->view('layout/admin_header', $data);
-        $this->load->view('user/index', $data);
+        $this->load->view('admin/index', $data);
         $this->load->view('layout/admin_footer');
     }
 }

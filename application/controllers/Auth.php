@@ -16,7 +16,7 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             // Set title page
-            $data['title'] = 'Coffeeright User Registration';
+            $data['title'] = 'Coffeeright Login';
             $this->load->view('layout/auth_header', $data);
             $this->load->view('auth/login');
             $this->load->view('layout/auth_footer');
@@ -36,15 +36,24 @@ class Auth extends CI_Controller
         if ($user) {
             // check user active or not
             if ($user['status'] == 1) {
-                // check password
+                // Cek Hash Password
                 if (password_verify($password, $user['password'])) {
                     $data = [
                         'email' => $user['email'],
                         'pengguna' => $user['nama_pengguna'],
                         'id_role' => $user['id_role']
                     ];
+
+                    // Session
                     $this->session->set_userdata($data);
-                    redirect('user');
+
+                    // Otorisasi Role
+                    if ($user['id_role'] == 1) {
+                        redirect('admin');
+                    } else {
+                        redirect('user');
+                    }
+                    // =========================================
                 } else {
                     $this->setAlert('Wrong password!', 'danger');
                     redirect('auth');
@@ -98,6 +107,12 @@ class Auth extends CI_Controller
             $this->setAlert('Congratulation! your account has been created. Please Login', 'success');
             redirect('auth');
         }
+    }
+
+    public function blocked()
+    {
+        $this->setAlert('You have been logged out!', 'success');
+        $this->load->view('auth/blocked');
     }
 
     public function logout()

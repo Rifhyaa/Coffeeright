@@ -20,7 +20,7 @@
                         <input type="hidden" name="id" value="<?php echo $kategori->id_kategori ?>" />
                         <div class="form-group">
                             <label class="control-label">Kategori<span style="color: red">*</span></label>
-                            <input type="text" class="form-control <?= form_error('deskripsi_kategori') ? 'is-invalid' : '' ?>" name="deskripsi_kategori" value="<?= $kategori->deskripsi_kategori ?>" placeholder="Deskripsi"></input>
+                            <input type="text" class="form-control <?= form_error('deskripsi_kategori') ? 'is-invalid' : '' ?>" name="deskripsi_kategori" value="<?= $kategori->deskripsi_kategori; ?>" placeholder="Deskripsi"></input>
                             <?= form_error('deskripsi_kategori', '<small class="text-red">', '</small>'); ?>
                         </div>
                         <input class="btn btn-primary" type="submit" name="btn" value="Ubah" />
