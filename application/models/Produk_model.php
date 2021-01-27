@@ -116,6 +116,6 @@ class Produk_model extends CI_Model
      */
     public function getAllSubKategori()
     {
-        return $this->db->get_where("mssubkategori", ["status" => 1])->result();
+        return $this->db->get_where("mssubkategori", ["status" => 1 || 0])->result();
     }
 }

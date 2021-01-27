@@ -121,7 +121,7 @@
                             Kategori
                         </a>
                         <!-- Sidenav Link (Sub Kategori)-->
-                        <a class="nav-link <?= ($this->uri->segment(1) == 'sub_kategori' ? 'active' : '') ?>" href="<?= base_url('sub_kategori'); ?>">
+                        <a class="nav-link <?= ($this->uri->segment(1) == 'subkategori' ? 'active' : '') ?>" href="<?= base_url('subkategori'); ?>">
                             <div class="nav-link-icon"><i class="fas fa-fw fa-sitemap"></i></div>
                             Sub Kategori
                         </a>

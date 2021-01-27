@@ -13,12 +13,12 @@
         <div class="container-fluid mt-4">
             <div class="card mb-4">
                 <div class="card-header">
-                    Data Produk
+                    Data Ulasan
                 </div>
                 <div class="card-body">
                     <div class="row form-group">
                         <div class="col-sm-12 col-md-6">
-                            <a class="btn btn-primary" href="<?= site_url('produk/add') ?>">Tambah</a>
+                            <a class="btn btn-primary" href="<?= site_url('ulasan/add') ?>">Tambah</a>
                         </div>
                     </div>
                     <div class="datatable">
@@ -26,34 +26,23 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama</th>
                                     <th>Deskripsi</th>
-                                    <th>Sub Kategori</th>
-                                    <th>Harga</th>
-                                    <th>Stok</th>
+                                    <th>Pengguna</th>
+                                    <th>Produk</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $num = 1; ?>
-                                <?php foreach ($msproduk as $produk) : ?>
+                                <?php foreach ($msulasan as $ulasan) : ?>
                                     <tr>
                                         <td> <?= $num++; ?> </td>
-                                        <td> <?= $produk->nama_produk; ?> </td>
-                                        <td> <?= $produk->deskripsi_produk; ?> </td>
+                                        <td> <?= $ulasan['deskripsi_ulasan']; ?> </td>
+                                        <td> <?= $ulasan['nama_pengguna']; ?> </td>
+                                        <td> <?= $ulasan['nama_produk']; ?> </td>
                                         <td>
-                                            <?php foreach ($subkategori as $row) {
-                                                if ($produk->id_subkategori == $row->id_subkategori) {
-                                                    echo $row->deskripsi_subkategori;
-                                                }
-                                            }
-                                            ?>
-                                        </td>
-                                        <td> Rp<?= $produk->harga_produk; ?> </td>
-                                        <td> <?= $produk->stok_produk; ?> </td>
-                                        <td>
-                                            <a href="<?php echo site_url('produk/edit/' . $produk->id_produk) ?>" data-toggle="tooltip" title="Ubah" class="btn btn-datatable btn-icon btn-transparent-dark mr-2" te><i data-feather="edit"></i></a>
-                                            <a onclick="deleteConfirm('<?= site_url('produk/delete/' . $produk->id_produk) ?>')" data-toggle="tooltip" title="Hapus" class="btn btn-datatable btn-icon btn-transparent-dark mr-2" te><i data-feather="trash-2"></i></a>
+                                            <a href="<?php echo site_url('ulasan/edit/' . $ulasan['id_ulasan']) ?>" data-toggle="tooltip" title="Ubah" class="btn btn-datatable btn-icon btn-transparent-dark mr-2" te><i data-feather="edit"></i></a>
+                                            <a onclick="deleteConfirm('<?= site_url('ulasan/delete/' . $ulasan['id_ulasan']) ?>')" data-toggle="tooltip" title="Hapus" class="btn btn-datatable btn-icon btn-transparent-dark mr-2" te><i data-feather="trash-2"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
