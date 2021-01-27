@@ -106,9 +106,9 @@
                         <!-- Sidenav Heading (Table)-->
                         <div class="sidenav-menu-heading">Table</div>
                         <!-- Sidenav Link (User)-->
-                        <a class="nav-link <?= ($this->uri->segment(1) == 'user' ? 'active' : '') ?>" href="<?= base_url('user'); ?>">
+                        <a class="nav-link <?= ($this->uri->segment(1) == 'pengguna' ? 'active' : '') ?>" href="<?= base_url('pengguna'); ?>">
                             <div class="nav-link-icon"><i class="fas fa-fw fa-user-tie"></i></div>
-                            User
+                            Pengguna
                         </a>
                         <!-- Sidenav Link (Produk)-->
                         <a class="nav-link <?= ($this->uri->segment(1) == 'produk' ? 'active' : '') ?>" href="<?= base_url('produk'); ?>">
@@ -242,11 +242,11 @@
                             </nav>
                         </div>
                         <!-- Sidenav Heading (Addons)-->
-                        <div class="sidenav-menu-heading">Plugins</div>
-                        <!-- Sidenav Link (Charts)-->
-                        <a class="nav-link" href="charts.html">
-                            <div class="nav-link-icon"><i data-feather="bar-chart"></i></div>
-                            Charts
+                        <div class="sidenav-menu-heading">Settings</div>
+                        <!-- Sidenav Link (User)-->
+                        <a class="nav-link <?= ($this->uri->segment(1) == 'user' ? 'active' : '') ?>" href="<?= base_url('user'); ?>">
+                            <div class="nav-link-icon"><i class="fas fa-fw fa-user-tie"></i></div>
+                            User
                         </a>
                         <!-- Sidenav Link (Tables)-->
                         <a class="nav-link" href="tables.html">
