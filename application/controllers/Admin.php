@@ -24,4 +24,16 @@ class Admin extends CI_Controller
         $this->load->view('admin/index', $data);
         $this->load->view('layout/admin_footer');
     }
+
+    public function dashboard()
+    {
+        // Set session
+        $data['user'] = $this->db->get_where('mspengguna', ['email' => $this->session->userdata('email')])->row_array();
+
+        // Set title page
+        $data['title'] = 'Coffeeright - Dashboard';
+
+        $this->load->view('layout/admin_header', $data);
+        $this->load->view('admin/dashboard', $data);
+    }
 }

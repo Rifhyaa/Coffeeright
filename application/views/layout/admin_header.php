@@ -99,23 +99,42 @@
                         <!-- Sidenav Menu Heading (Core)-->
                         <div class="sidenav-menu-heading">Core</div>
                         <!-- Sidenav Accordion (Dashboard)-->
-                        <a class="nav-link collapsed" href="#">
+                        <a class="nav-link collapsed <?= ($this->uri->segment(2) == 'dashboard' ? 'active' : '') ?>" href="<?= base_url('admin/dashboard'); ?>">
                             <div class="nav-link-icon"><i data-feather="activity"></i></div>
                             Dashboards
                         </a>
-                        <!-- Sidenav Heading (DataTable)-->
+                        <!-- Sidenav Heading (Table)-->
                         <div class="sidenav-menu-heading">Table</div>
-                        <!-- Sidenav Accordion (Pages)-->
-                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                            <div class="nav-link-icon"><i data-feather="database"></i></div>
-                            Master
-                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <!-- Sidenav Link (User)-->
+                        <a class="nav-link <?= ($this->uri->segment(1) == 'user' ? 'active' : '') ?>" href="<?= base_url('user'); ?>">
+                            <div class="nav-link-icon"><i class="fas fa-fw fa-user-tie"></i></div>
+                            User
                         </a>
-                        <div class="collapse" id="collapsePages" data-parent="#accordionSidenav">
-                            <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesMenu">
-                                <a class="nav-link" href="<?php echo site_url('kategori'); ?>">Kategori</a>
-                            </nav>
-                        </div>
+                        <!-- Sidenav Link (Produk)-->
+                        <a class="nav-link <?= ($this->uri->segment(1) == 'produk' ? 'active' : '') ?>" href="<?= base_url('produk'); ?>">
+                            <div class="nav-link-icon"><i class="fas fa-fw fa-cubes"></i></div>
+                            Produk
+                        </a>
+                        <!-- Sidenav Link (Kategori)-->
+                        <a class="nav-link <?= ($this->uri->segment(1) == 'kategori' ? 'active' : '') ?>" href="<?= base_url('kategori'); ?>">
+                            <div class="nav-link-icon"><i class="fas fa-fw fa-list-ul"></i></div>
+                            Kategori
+                        </a>
+                        <!-- Sidenav Link (Sub Kategori)-->
+                        <a class="nav-link <?= ($this->uri->segment(1) == 'sub_kategori' ? 'active' : '') ?>" href="<?= base_url('sub_kategori'); ?>">
+                            <div class="nav-link-icon"><i class="fas fa-fw fa-sitemap"></i></div>
+                            Sub Kategori
+                        </a>
+                        <!-- Sidenav Link (Ulasan)-->
+                        <a class="nav-link <?= ($this->uri->segment(1) == 'ulasan' ? 'active' : '') ?>" href="<?= base_url('ulasan'); ?>">
+                            <div class="nav-link-icon"><i class="far fa-fw fa-sticky-note"></i></div>
+                            Ulasan
+                        </a>
+                        <!-- Sidenav Link (Vendor)-->
+                        <a class="nav-link <?= ($this->uri->segment(1) == 'vendor' ? 'active' : '') ?>" href="<?= base_url('vendor/index'); ?>">
+                            <div class="nav-link-icon"><i class="fas fa-fw fa-truck"></i></div>
+                            Vendor
+                        </a>
                         <!-- Sidenav Heading (UI Toolkit)-->
                         <div class="sidenav-menu-heading">UI Toolkit</div>
                         <!-- Sidenav Accordion (Layout)-->
