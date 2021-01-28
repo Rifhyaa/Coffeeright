@@ -20,8 +20,14 @@ class Admin extends CI_Controller
         // Set title page
         $data['title'] = 'Coffeeright - My Profile';
 
+        // Set Data Dashboard
+        $data['totalUser'] = $this->db->get_where('mspengguna', ['status' => 1])->num_rows();
+        $data['totalProduk'] = $this->db->get_where('msproduk', ['status' => 1])->num_rows();
+        $data['totalVendor'] = $this->db->get_where('msvendor', ['status' => 1])->num_rows();
+        $data['totalUlasan'] = $this->db->query('SELECT * FROM msulasan')->num_rows();
+
         $this->load->view('layout/admin_header', $data);
-        $this->load->view('admin/index', $data);
+        $this->load->view('admin/dashboard', $data);
         $this->load->view('layout/admin_footer');
     }
 

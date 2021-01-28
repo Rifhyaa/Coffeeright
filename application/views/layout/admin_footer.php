@@ -24,7 +24,7 @@
             </div>
             <div class="modal-body">Tekan tombol 'Logout' untuk mengakhiri sesi anda.</div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
                 <a class="btn btn-primary" href="<?= base_url('auth/logout') ?>">Logout</a>
             </div>
         </div>
@@ -42,8 +42,8 @@
             </div>
             <div class="modal-body">Data yang dihapus tidak akan bisa dikembalikan.</div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a id="btn-delete" class="btn btn-danger" href="#">Delete</a>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                <a id="btn-delete" class="btn btn-danger" href="#">Hapus</a>
             </div>
         </div>
     </div>
