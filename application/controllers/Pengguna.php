@@ -83,8 +83,9 @@ class Pengguna extends CI_Controller
             $this->load->view('pengguna/edit', $data);
             $this->load->view('layout/admin_footer');
         } else {
-            $upload_image = $_FILES['foto']['name'];
-            if ($upload_image) {
+            
+            if (!empty($_FILES['foto']['name'])) {
+                $upload_image = $_FILES['foto']['name'];
                 $config['allowed_types'] = 'gif|jpg|png';
                 $config['max_size']     = '2048';
                 $config['upload_path'] = './assets/img/upload/';

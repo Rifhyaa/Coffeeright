@@ -99,7 +99,7 @@
                         <!-- Sidenav Menu Heading (Core)-->
                         <div class="sidenav-menu-heading">Core</div>
                         <!-- Sidenav Accordion (Dashboard)-->
-                        <a class="nav-link collapsed <?= ($this->uri->segment(1) == 'admin' ? 'active' : '') ?>" href="<?= base_url('admin/dashboard'); ?>">
+                        <a class="nav-link collapsed <?= ($this->uri->segment(2) == 'dashboard' ? 'active' : '') ?>" href="<?= base_url('admin/dashboard'); ?>">
                             <div class="nav-link-icon"><i data-feather="activity"></i></div>
                             Dashboards
                         </a>
@@ -134,6 +134,10 @@
                         <a class="nav-link <?= ($this->uri->segment(1) == 'vendor' ? 'active' : '') ?>" href="<?= base_url('vendor/index'); ?>">
                             <div class="nav-link-icon"><i class="fas fa-fw fa-truck"></i></div>
                             Vendor
+                        </a>
+                        <a class="nav-link <?= ($this->uri->segment(1) == 'kota' ? 'active' : '') ?>" href="<?= base_url('kota/index'); ?>">
+                            <div class="nav-link-icon"><i class="fas fa-fw fa-building"></i></div>
+                            Kota
                         </a>
                         <!-- Sidenav Heading (UI Toolkit)-->
                         <div class="sidenav-menu-heading">UI Toolkit</div>
