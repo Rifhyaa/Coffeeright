@@ -24,3 +24,14 @@ function is_logged_in()
         }
     }
 }
+
+function check_role($id_role)
+{
+    if ($id_role == 1) {
+        return 'Admin';
+    } else if ($id_role == 2) {
+        return 'Member';
+    } else {
+        return 'Kurir';
+    }
+}

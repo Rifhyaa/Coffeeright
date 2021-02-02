@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Kota_model extends CI_Model
+class Kurir_model extends CI_Model
 {
     // Nama Table
     private $_table = "mskota";

@@ -111,7 +111,6 @@ class Auth extends CI_Controller
 
     public function blocked()
     {
-        $this->setAlert('You have been logged out!', 'success');
         $this->load->view('auth/blocked');
     }
 

@@ -20489,3 +20489,7 @@ pre[class*=language-] {
 .bb-custom {
   border-bottom: 1px solid #e0e5ec !important;
 }
+
+.scrollme {
+  overflow-x: auto;
+}

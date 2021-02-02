@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title><?= $title ?></title>
-    <link href="<?= base_url('assets/') ?>css/styles.css" rel="stylesheet" />
+    <link href="<?= base_url('assets/'); ?>css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" rel="stylesheet" crossorigin="anonymous" />
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="<?= base_url('assets/img/coffeeright.png'); ?>" />
     <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
 </head>
@@ -62,7 +62,7 @@
                         </div>
                     </h6>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#!">
+                    <a class="dropdown-item" href="<?= base_url('user'); ?>">
                         <div class="dropdown-item-icon"><i data-feather="user"></i></div>
                         My Profile
                     </a>
@@ -99,7 +99,7 @@
                         <!-- Sidenav Menu Heading (Core)-->
                         <div class="sidenav-menu-heading">Core</div>
                         <!-- Sidenav Accordion (Dashboard)-->
-                        <a class="nav-link collapsed <?= ($this->uri->segment(2) == 'dashboard' ? 'active' : '') ?>" href="<?= base_url('admin/dashboard'); ?>">
+                        <a class="nav-link collapsed <?= ($this->uri->segment(2) == 'dashboard' ? 'active' : '') ?>" href="<?= base_url('user/dashboard'); ?>">
                             <div class="nav-link-icon"><i data-feather="activity"></i></div>
                             Dashboards
                         </a>
@@ -135,127 +135,44 @@
                             <div class="nav-link-icon"><i class="fas fa-fw fa-truck"></i></div>
                             Vendor
                         </a>
+                        <!-- Sidenav Link (Kota)-->
                         <a class="nav-link <?= ($this->uri->segment(1) == 'kota' ? 'active' : '') ?>" href="<?= base_url('kota/index'); ?>">
                             <div class="nav-link-icon"><i class="fas fa-fw fa-building"></i></div>
                             Kota
                         </a>
-                        <!-- Sidenav Heading (UI Toolkit)-->
-                        <div class="sidenav-menu-heading">UI Toolkit</div>
-                        <!-- Sidenav Accordion (Layout)-->
-                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="nav-link-icon"><i data-feather="layout"></i></div>
-                            Layout
-                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <!-- Sidenav Heading (Application)-->
+                        <div class="sidenav-menu-heading">Application</div>
+                        <!-- Sidenav Link (Pengiriman)-->
+                        <a class="nav-link <?= ($this->uri->segment(2) == 'index' ? 'active' : '') ?>" href="<?= base_url('user'); ?>">
+                            <div class="nav-link-icon"><i class="fas fa-fw fa-shipping-fast"></i></div>
+                            Pengiriman
                         </a>
-                        <div class="collapse" id="collapseLayouts" data-parent="#accordionSidenav">
-                            <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayout">
-                                <!-- Nested Sidenav Accordion (Layout -> Navigation)-->
-                                <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseLayoutSidenavVariations" aria-expanded="false" aria-controls="collapseLayoutSidenavVariations">
-                                    Navigation
-                                    <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="collapseLayoutSidenavVariations" data-parent="#accordionSidenavLayout">
-                                    <nav class="sidenav-menu-nested nav">
-                                        <a class="nav-link" href="layout-static.html">Static Sidenav</a>
-                                        <a class="nav-link" href="layout-dark.html">Dark Sidenav</a>
-                                        <a class="nav-link" href="layout-rtl.html">RTL Layout</a>
-                                    </nav>
-                                </div>
-                                <!-- Nested Sidenav Accordion (Layout -> Container Options)-->
-                                <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseLayoutContainers" aria-expanded="false" aria-controls="collapseLayoutContainers">
-                                    Container Options
-                                    <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="collapseLayoutContainers" data-parent="#accordionSidenavLayout">
-                                    <nav class="sidenav-menu-nested nav">
-                                        <a class="nav-link" href="layout-boxed.html">Boxed Layout</a>
-                                        <a class="nav-link" href="layout-fluid.html">Fluid Layout</a>
-                                    </nav>
-                                </div>
-                                <!-- Nested Sidenav Accordion (Layout -> Page Headers)-->
-                                <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseLayoutsPageHeaders" aria-expanded="false" aria-controls="collapseLayoutsPageHeaders">
-                                    Page Headers
-                                    <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="collapseLayoutsPageHeaders" data-parent="#accordionSidenavLayout">
-                                    <nav class="sidenav-menu-nested nav">
-                                        <a class="nav-link" href="header-simplified.html">Simplified</a>
-                                        <a class="nav-link" href="header-compact.html">Compact</a>
-                                        <a class="nav-link" href="header-overlap.html">Content Overlap</a>
-                                        <a class="nav-link" href="header-breadcrumbs.html">Breadcrumbs</a>
-                                        <a class="nav-link" href="header-light.html">Light</a>
-                                    </nav>
-                                </div>
-                                <!-- Nested Sidenav Accordion (Layout -> Starter Layouts)-->
-                                <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseLayoutsStarterTemplates" aria-expanded="false" aria-controls="collapseLayoutsStarterTemplates">
-                                    Starter Layouts
-                                    <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="collapseLayoutsStarterTemplates" data-parent="#accordionSidenavLayout">
-                                    <nav class="sidenav-menu-nested nav">
-                                        <a class="nav-link" href="starter-default.html">Default</a>
-                                        <a class="nav-link" href="starter-minimal.html">Minimal</a>
-                                    </nav>
-                                </div>
-                            </nav>
-                        </div>
-                        <!-- Sidenav Accordion (Components)-->
-                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseComponents" aria-expanded="false" aria-controls="collapseComponents">
-                            <div class="nav-link-icon"><i data-feather="package"></i></div>
-                            Components
-                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseComponents" data-parent="#accordionSidenav">
-                            <nav class="sidenav-menu-nested nav">
-                                <a class="nav-link" href="alerts.html">Alerts</a>
-                                <a class="nav-link" href="avatars.html">Avatars</a>
-                                <a class="nav-link" href="badges.html">Badges</a>
-                                <a class="nav-link" href="buttons.html">Buttons</a>
-                                <a class="nav-link" href="cards.html">
-                                    Cards
-                                    <span class="badge badge-primary-soft text-primary ml-auto">Updated</span>
-                                </a>
-                                <a class="nav-link" href="dropdowns.html">Dropdowns</a>
-                                <a class="nav-link" href="forms.html">
-                                    Forms
-                                    <span class="badge badge-primary-soft text-primary ml-auto">Updated</span>
-                                </a>
-                                <a class="nav-link" href="modals.html">Modals</a>
-                                <a class="nav-link" href="navigation.html">Navigation</a>
-                                <a class="nav-link" href="progress.html">Progress</a>
-                                <a class="nav-link" href="step.html">Step</a>
-                                <a class="nav-link" href="timeline.html">Timeline</a>
-                                <a class="nav-link" href="toasts.html">Toasts</a>
-                                <a class="nav-link" href="tooltips.html">Tooltips</a>
-                            </nav>
-                        </div>
-                        <!-- Sidenav Accordion (Utilities)-->
-                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="false" aria-controls="collapseUtilities">
-                            <div class="nav-link-icon"><i data-feather="tool"></i></div>
-                            Utilities
-                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseUtilities" data-parent="#accordionSidenav">
-                            <nav class="sidenav-menu-nested nav">
-                                <a class="nav-link" href="animations.html">Animations</a>
-                                <a class="nav-link" href="background.html">Background</a>
-                                <a class="nav-link" href="borders.html">Borders</a>
-                                <a class="nav-link" href="lift.html">Lift</a>
-                                <a class="nav-link" href="shadows.html">Shadows</a>
-                                <a class="nav-link" href="typography.html">Typography</a>
-                            </nav>
-                        </div>
-                        <!-- Sidenav Heading (Addons)-->
-                        <div class="sidenav-menu-heading">Settings</div>
                         <!-- Sidenav Link (User)-->
-                        <a class="nav-link <?= ($this->uri->segment(1) == 'user' ? 'active' : '') ?>" href="<?= base_url('user'); ?>">
-                            <div class="nav-link-icon"><i class="fas fa-fw fa-user-tie"></i></div>
-                            User
+                        <a class="nav-link <?= ($this->uri->segment(2) == 'edit' ? 'active' : '') ?>" href="<?= base_url('user/edit'); ?>">
+                            <div class="nav-link-icon"><i class="fas fa-fw fa-truck-loading"></i></div>
+                            Barang Masuk
                         </a>
-                        <!-- Sidenav Link (Tables)-->
-                        <a class="nav-link" href="tables.html">
-                            <div class="nav-link-icon"><i data-feather="filter"></i></div>
-                            Tables
+                        <!-- Sidenav Link (User)-->
+                        <a class="nav-link <?= ($this->uri->segment(2) == 'security' ? 'active' : '') ?>" href="<?= base_url('user/security'); ?>">
+                            <div class="nav-link-icon"><i class="fas fa-fw fa-dolly"></i></div>
+                            Barang Keluar
+                        </a>
+                        <!-- Sidenav Heading (User)-->
+                        <div class="sidenav-menu-heading">User</div>
+                        <!-- Sidenav Link (User)-->
+                        <a class="nav-link <?= ($this->uri->segment(2) == 'index' ? 'active' : '') ?>" href="<?= base_url('user'); ?>">
+                            <div class="nav-link-icon"><i class="fas fa-fw fa-user-tie"></i></div>
+                            My Profile
+                        </a>
+                        <!-- Sidenav Link (User)-->
+                        <a class="nav-link <?= ($this->uri->segment(2) == 'edit' ? 'active' : '') ?>" href="<?= base_url('user/edit'); ?>">
+                            <div class="nav-link-icon"><i class="fas fa-fw fa-user-edit"></i></div>
+                            Edit Profile
+                        </a>
+                        <!-- Sidenav Link (User)-->
+                        <a class="nav-link <?= ($this->uri->segment(2) == 'security' ? 'active' : '') ?>" href="<?= base_url('user/security'); ?>">
+                            <div class="nav-link-icon"><i class="fas fa-fw fa-key"></i></div>
+                            Security
                         </a>
                     </div>
                 </div>
@@ -263,7 +180,7 @@
                 <div class="sidenav-footer">
                     <div class="sidenav-footer-content">
                         <div class="sidenav-footer-title"><?= $user['nama_pengguna']; ?></div>
-                        <div class="sidenav-footer-title text-primary"><?php echo $user['id_role'] == 1 ? "Admin" : "Member" ?></div>
+                        <div class="sidenav-footer-title text-primary"><?= check_role($user['id_role']); ?></div>
                     </div>
                 </div>
             </nav>
