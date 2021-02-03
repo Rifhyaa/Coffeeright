@@ -1,13 +1,15 @@
 <div id="layoutSidenav_content">
     <main>
-        <header class="bg-white border-bottom">
-            <div class="container-fluid">
-                <div class="form-group pt-3">
-                    <div class="mt-2 mb-2">
-                        <h4 class="text-secondary"><?= $title; ?></h4>
-                    </div>
-                </div>
-            </div>
+        <header>
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="main-breadcrumb">
+                <ol class="breadcrumb bg-white">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item">User</li>
+                    <li class="breadcrumb-item text-blue" aria-current="page">Pengguna</li>
+                </ol>
+            </nav>
+            <!-- /Breadcrumb -->
         </header>
         <!-- Main page content-->
         <div class="container-fluid mt-4">
@@ -26,13 +28,13 @@
                             <table class="table table-bordered table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Nama Pengguna</th>
-                                        <th>Email</th>
-                                        <th>Telepon</th>
-                                        <th>Alamat</th>
-                                        <th>Jenis Pengguna</th>
-                                        <th>Aksi</th>
+                                        <th class="text-center min-wd-50">No</th>
+                                        <th class="text-center">Nama Pengguna</th>
+                                        <th class="text-center">Email</th>
+                                        <th class="text-center">Telepon</th>
+                                        <th class="text-center">Alamat</th>
+                                        <th class="text-center">Jenis Pengguna</th>
+                                        <th class="text-center min-wd-50">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,10 +52,12 @@
                                                     echo "Admin";
                                                 } else if ($pengguna->id_role == "2") {
                                                     echo "Pelanggan";
+                                                } else {
+                                                    echo "Kurir";
                                                 }
                                                 ?>
                                             </td>
-                                            <td>
+                                            <td class="text-center min-wd-50">
                                                 <a href="<?php echo site_url('pengguna/edit/' . $pengguna->id_pengguna) ?>" data-toggle="tooltip" title="Ubah" class="btn btn-datatable btn-icon btn-transparent-dark mr-2" te><i data-feather="edit"></i></a>
                                                 <a onclick="deleteConfirm('<?= site_url('pengguna/delete/' . $pengguna->id_pengguna) ?>')" data-toggle="tooltip" title="Hapus" class="btn btn-datatable btn-icon btn-transparent-dark mr-2" te><i data-feather="trash-2"></i></a>
                                             </td>

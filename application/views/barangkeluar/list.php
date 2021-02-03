@@ -5,9 +5,9 @@
             <!-- Breadcrumb -->
             <nav aria-label="breadcrumb" class="main-breadcrumb">
                 <ol class="breadcrumb bg-white">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">User</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item">User</li>
+                    <li class="breadcrumb-item text-blue" aria-current="page">Barang Keluar</li>
                 </ol>
             </nav>
             <!-- /Breadcrumb -->

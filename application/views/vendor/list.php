@@ -1,13 +1,15 @@
 <div id="layoutSidenav_content">
     <main>
-        <header class="bg-white border-bottom">
-            <div class="container-fluid">
-                <div class="form-group pt-3">
-                    <div class="mt-2 mb-2">
-                        <h4 class="text-secondary"><?= $title; ?></h4>
-                    </div>
-                </div>
-            </div>
+        <header>
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="main-breadcrumb">
+                <ol class="breadcrumb bg-white">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item">User</li>
+                    <li class="breadcrumb-item text-blue" aria-current="page">Vendor</li>
+                </ol>
+            </nav>
+            <!-- /Breadcrumb -->
         </header>
         <!-- Main page content-->
         <div class="container-fluid mt-4">
@@ -26,12 +28,12 @@
                             <table class="table table-bordered table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Alamat</th>
-                                        <th>Email</th>
-                                        <th>Telepon</th>
-                                        <th>Aksi</th>
+                                        <th class="text-center min-wd-50">No</th>
+                                        <th class="text-center">Nama</th>
+                                        <th class="text-center">Alamat</th>
+                                        <th class="text-center">Email</th>
+                                        <th class="text-center">Telepon</th>
+                                        <th class="text-center min-wd-50">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,7 +45,7 @@
                                             <td> <?= $vendor->alamat_vendor; ?> </td>
                                             <td> <?= $vendor->email_vendor; ?> </td>
                                             <td> <?= $vendor->telp_vendor; ?> </td>
-                                            <td>
+                                            <td class="text-center min-wd-50">
                                                 <a href="<?php echo site_url('vendor/edit/' . $vendor->id_vendor) ?>" data-toggle="tooltip" title="Ubah" class="btn btn-datatable btn-icon btn-transparent-dark mr-2" te><i data-feather="edit"></i></a>
                                                 <a onclick="deleteConfirm('<?= site_url('vendor/delete/' . $vendor->id_vendor) ?>')" data-toggle="tooltip" title="Hapus" class="btn btn-datatable btn-icon btn-transparent-dark mr-2" te><i data-feather="trash-2"></i></a>
                                             </td>

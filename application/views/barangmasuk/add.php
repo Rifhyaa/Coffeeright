@@ -1,13 +1,16 @@
 <div id="layoutSidenav_content">
     <main>
-        <header class="bg-white border-bottom">
-            <div class="container-fluid">
-                <div class="form-group pt-3">
-                    <div class="mt-2 mb-2">
-                        <h4 class="text-secondary"><?= $title; ?></h4>
-                    </div>
-                </div>
-            </div>
+        <header>
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="main-breadcrumb">
+                <ol class="breadcrumb bg-white">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item">User</li>
+                    <li class="breadcrumb-item">Barang Masuk</li>
+                    <li class="breadcrumb-item text-blue" aria-current="page">Konfirmasi</li>
+                </ol>
+            </nav>
+            <!-- /Breadcrumb -->
         </header>
         <!-- Main page content-->
         <div class="container mt-4">

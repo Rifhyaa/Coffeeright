@@ -20493,3 +20493,7 @@ pre[class*=language-] {
 .scrollme {
   overflow-x: auto;
 }
+
+.min-wd-50 {
+  min-width:50px;
+}
