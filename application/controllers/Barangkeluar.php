@@ -55,11 +55,10 @@ class Barangkeluar extends CI_Controller
         $keranjang = array(
             'id' => $getData->id_produk,
             'qty' => 1,
-            'name' => $getData->nama_produk
+            'name' => $getData->nama_produk,
+            'price' => $getData->harga_produk
         );
         $this->cart->insert($keranjang);
-
-        var_dump($this->cart->contents());
 
         //$produk = $this->Barangkeluar_model;
         //$produk->cobasave($keranjang);
@@ -177,7 +176,6 @@ class Barangkeluar extends CI_Controller
         $barang_keluar = $this->Barangkeluar_model;
         foreach ($this->cart->contents() as $items) {
             $barang_keluar->cobasave($items);
-            $this->cart->update(array('rowid' => $items['id'], 'qty' => 0));
         }
 
         redirect(site_url('user'));

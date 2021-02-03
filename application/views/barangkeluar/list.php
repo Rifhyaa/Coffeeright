@@ -10,7 +10,7 @@
             </div>
         </header>
         <!-- Main page content-->
-        <div class="container-fluid mt-4 d-flex justify content between">
+        <div class="container-fluid mt-4 ">
             <div class="card mb-5">
                 <div class="card-header">
                     Data Produk
