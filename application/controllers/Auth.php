@@ -39,6 +39,7 @@ class Auth extends CI_Controller
                 // Cek Hash Password
                 if (password_verify($password, $user['password'])) {
                     $data = [
+                        'id_pengguna' => $user['id_pengguna'],
                         'email' => $user['email'],
                         'pengguna' => $user['nama_pengguna'],
                         'id_role' => $user['id_role']
@@ -49,7 +50,7 @@ class Auth extends CI_Controller
 
                     // Otorisasi Role
                     if ($user['id_role'] == 1) {
-                        redirect('admin');
+                        redirect('user/dashboard');
                     } else {
                         redirect('user');
                     }

@@ -21,7 +21,7 @@
                             <a class="btn btn-primary" href="<?= site_url('produk/add') ?>">Tambah</a>
                         </div>
                     </div>
-                    <div class="table-responsive">
+                    <div class="table-responsive pt-2">
                         <div class="datatable">
                             <table class="table table-bordered table-hover table-striped nowrap" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
@@ -62,7 +62,6 @@
                             </table>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

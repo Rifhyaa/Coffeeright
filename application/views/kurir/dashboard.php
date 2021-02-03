@@ -18,7 +18,7 @@
                     <div class="row align-items-center justify-content-between">
                         <div class="col">
                             <h2 class="text-primary">Selamat datang, <?= $user['nama_pengguna']; ?> </h2>
-                            <p class="text-gray-700">Semoga harimu menyenangkan. Jangan lupa menjaga jarak, memakai masker, dan menetapkan protokol kesehatan di dalam kantor. </p>
+                            <p class="text-gray-700">Semoga harimu menyenangkan. Jangan lupa menjaga jarak, memakai masker, dan menetapkan protokol kesehatan di dalam maupun diluar kantor. </p>
                         </div>
                         <div class="col d-none d-lg-block mt-xxl-n4"><img class="img-fluid px-xl-4 mt-xxl-n5" src="<?= base_url('/'); ?>assets/img/illustrations/statistics.svg" /></div>
                     </div>
@@ -31,7 +31,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
-                                    <div class="small font-weight-bold text-primary mb-1">User</div>
+                                    <div class="small font-weight-bold text-primary mb-1">Total Pickup</div>
                                     <div class="h4"><?= $totalUser; ?></div>
                                 </div>
                                 <div class="ml-2"><i class="fas fa-user-tie fa-2x text-gray-200"></i></div>
@@ -45,7 +45,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
-                                    <div class="small font-weight-bold text-secondary mb-1">Produk</div>
+                                    <div class="small font-weight-bold text-secondary mb-1">Pickup Saya</div>
                                     <div class="h4"><?= $totalProduk; ?></div>
                                 </div>
                                 <div class="ml-2"><i class="fas fa-tag fa-2x text-gray-200"></i></div>
@@ -59,7 +59,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
-                                    <div class="small font-weight-bold text-success mb-1">Vendor</div>
+                                    <div class="small font-weight-bold text-success mb-1">Sedang Dikirim</div>
                                     <div class="h4"><?= $totalVendor; ?></div>
                                 </div>
                                 <div class="ml-2"><i class="fas fa-mouse-pointer fa-2x text-gray-200"></i></div>
@@ -73,7 +73,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
-                                    <div class="small font-weight-bold text-info mb-1">Ulasan</div>
+                                    <div class="small font-weight-bold text-info mb-1">Selesai</div>
                                     <div class="h4"><?= $totalUlasan; ?></div>
                                 </div>
                                 <div class="ml-2"><i class="fas fa-percentage fa-2x text-gray-200"></i></div>

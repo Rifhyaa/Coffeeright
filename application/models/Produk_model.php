@@ -118,4 +118,34 @@ class Produk_model extends CI_Model
     {
         return $this->db->get_where("mssubkategori", ["status" => 1 || 0])->result();
     }
+
+    /**
+     * Ubah data produk di db
+     * Stok dikurangin
+     */
+    public function kurangStok($id, $stokAwal, $stokKurang)
+    {
+        $user_session = $this->session->userdata('pengguna');
+
+        $this->stok_produk = $stokAwal - $stokKurang;
+        if ($this->stok_produk < 0) {
+            $this->stok_produk = 0;
+        }
+        //$this->modiby = $user_session;
+
+        return $this->db->update($this->_table, $this, array('id_produk' => $id));
+    }
+
+    public function tambahStok($id, $stokAwal, $stokKurang)
+    {
+        $user_session = $this->session->userdata('pengguna');
+
+        $this->stok_produk = $stokAwal + $stokKurang;
+        if ($this->stok_produk < 0) {
+            $this->stok_produk = 0;
+        }
+        //$this->modiby = $user_session;
+
+        return $this->db->update($this->_table, $this, array('id_produk' => $id));
+    }
 }

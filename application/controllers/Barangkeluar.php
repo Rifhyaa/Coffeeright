@@ -55,91 +55,34 @@ class Barangkeluar extends CI_Controller
         $keranjang = array(
             'id' => $getData->id_produk,
             'qty' => 1,
-            'name' => $getData->nama_produk,
-            'price' => $getData->harga_produk
+            'price' => $getData->harga_produk,
+            'name' => $getData->nama_produk
         );
         $this->cart->insert($keranjang);
 
-        //$produk = $this->Barangkeluar_model;
-        //$produk->cobasave($keranjang);
-
-        // $tempkeluar = $this->Tempkeluar_model;
-        // $validation = $this->form_validation;
-        // $validation->set_rules($tempkeluar->rules());
-
-        // if ($validation->run()) {
-        //     $tempkeluar->savetemp();
-        //     redirect('barangkeluar');
-        // }
+        // var_dump($this->cart->contents());
 
         $this->load->view('barangkeluar/list', $data);
         redirect(site_url('barangkeluar'));
     }
 
-    public function addtemp()
+    public function plus()
     {
-        // Set session
-        $data['user'] = $this->db->get_where('mspengguna', ['email' => $this->session->userdata('email')])->row_array();
-
-        // Set title page
-        $data['title'] = 'Transaksi Barang Keluar';
-
-        $tempkeluar = $this->Tempkeluar_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($tempkeluar->rules());
-
-        if ($validation->run()) {
-            $tempkeluar->savetemp();
-            redirect('barangkeluar');
-        }
-
-        $this->load->view('barangkeluar/list', $data);
+        $get = $this->input->get();
+        $rowid = $get['rowid'];
+        $qty = $get['qty'];
+        $this->cart->update(array('rowid' => $rowid, 'qty' => $qty + 1));
         redirect(site_url('barangkeluar'));
     }
 
-    // public function minusCart($id)
-    // {
-    //     // Set session
-    //     $data['user'] = $this->db->get_where('mspengguna', ['email' => $this->session->userdata('email')])->row_array();
-
-    //     // Set title page
-    //     $data['title'] = 'Transaksi Barang Keluar';
-
-    //     $data["msproduk"] = $this->Produk_model->getAll();
-
-    // 	$subkategori = $this->Produk_model->getAllSubKategori();
-    // 	$data['subkategori'] = $subkategori;
-
-    //     $getData = $this->Barangkeluar_model->getProductCart('msproduk',$id);
-    //     $keranjang = array(  'id' => $getData->id_produk,
-    //                     'qty' => -1,
-    //                     'price' => $getData->harga_produk,
-    //                     'name' => $getData->nama_produk);
-
-    //     if($keranjang.['qty'] == "0")
-    //     {
-    //         $this->cart->update(array('qty' => 0));
-    //         redirect(site_url('barangkeluar'));
-    //     }
-    //     else
-    //     {
-    //         $this->cart->insert($keranjang);
-    //         $this->load->view('barangkeluar/list', $data);
-    //         redirect(site_url('barangkeluar'));
-    //     }    
-    // }
-
-    // public function plus($rowid)
-    // {
-    //     $this->cart->update(array('rowid' => $rowid, 'qty' => $qty + 1));
-    //     redirect(site_url('barangkeluar'));
-    // }
-
-    // public function minus($rowid)
-    // {
-    //     $this->cart->update(array('rowid' => $rowid, 'qty' => $qty - 1));
-    //     redirect(site_url('barangkeluar'));
-    // }
+    public function minus()
+    {
+        $get = $this->input->get();
+        $rowid = $get['rowid'];
+        $qty = $get['qty'];
+        $this->cart->update(array('rowid' => $rowid, 'qty' => $qty - 1));
+        redirect(site_url('barangkeluar'));
+    }
 
     public function hapus($rowid)
     {
@@ -164,7 +107,7 @@ class Barangkeluar extends CI_Controller
         $this->load->view('barangkeluar/list', $data);
     }
 
-    public function cobasave()
+    public function saveData()
     {
         // Set session
         $data['user'] = $this->db->get_where('mspengguna', ['email' => $this->session->userdata('email')])->row_array();
@@ -172,14 +115,48 @@ class Barangkeluar extends CI_Controller
         // Set title page
         $data['title'] = 'Transaksi Barang Keluar';
 
-
         $barang_keluar = $this->Barangkeluar_model;
+        $produk = $this->Produk_model;
+
+        $id_trkeluar = date('YmdHis') . randomString();
+        $total_produk = $this->cart->total_items();
+
+        // Memasukkan data ke tabel trbarangkeluar
+        $barang_keluar->save($id_trkeluar, $total_produk);
+
+        // Memasukkan data ke tabel trbarangkeluar
         foreach ($this->cart->contents() as $items) {
-            $barang_keluar->cobasave($items);
+            $barang_keluar->saveDetail($items, $id_trkeluar);
+
+            // Mengurangi Stok produk
+            $dataproduk = $produk->getById($items['id']);
+            $produk->kurangStok($items['id'], $dataproduk->stok_produk, $items['qty']);
+            //$this->cart->update(array('rowid' => $items['id'], 'qty' => 0));
+        }
+        $this->cart->destroy();
+        redirect(site_url('user'));
+    }
+
+    public function add()
+    {
+        // Set session
+        $data['user'] = $this->db->get_where('mspengguna', ['email' => $this->session->userdata('email')])->row_array();
+
+        // Set title page
+        $data['title'] = 'Tambah Barang Keluar';
+
+        $barangkeluar = $this->Barangkeluar_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($barangkeluar->rules());
+
+        if ($validation->run()) {
+            $barangkeluar->save();
+            redirect('barangkeluar');
         }
 
-        redirect(site_url('user'));
-        //$produk = $this->Barangkeluar_model;
-        //$produk->cobasave($keranjang);
+        // Menampilkan tampilan
+        $this->load->view('layout/admin_header', $data);
+        $this->load->view('barangkeluar/add', $data);
+        $this->load->view('layout/admin_footer');
     }
 }

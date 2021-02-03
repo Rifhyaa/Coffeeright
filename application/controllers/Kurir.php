@@ -15,7 +15,7 @@ class Kurir extends CI_Controller
     }
 
     /**
-     * View Data Kategori
+     * View Data Kurir
      */
     public function index()
     {
@@ -25,11 +25,15 @@ class Kurir extends CI_Controller
         // Set title page
         $data['title'] = 'List Kota';
 
-        $data["mskota"] = $this->Kota_model->getAll();
+        // Set Data Dashboard
+        $data['totalUser'] = $this->db->get_where('mspengguna', ['status' => 1])->num_rows();
+        $data['totalProduk'] = $this->db->get_where('msproduk', ['status' => 1])->num_rows();
+        $data['totalVendor'] = $this->db->get_where('msvendor', ['status' => 1])->num_rows();
+        $data['totalUlasan'] = $this->db->query('SELECT * FROM msulasan')->num_rows();
 
         // Menampilkan tampilan
         $this->load->view('layout/admin_header', $data);
-        $this->load->view('kota/list', $data);
+        $this->load->view('kurir/dashboard', $data);
         $this->load->view('layout/admin_footer');
     }
 
@@ -42,7 +46,46 @@ class Kurir extends CI_Controller
         $data['user'] = $this->db->get_where('mspengguna', ['email' => $this->session->userdata('email')])->row_array();
 
         // Set title page
-        $data['title'] = 'Tambah Kota';
+        $data['title'] = 'Daftar Pickup';
+
+        // Menampilkan tampilan
+        $this->load->view('layout/admin_header', $data);
+        $this->load->view('kurir/daftarpickup', $data);
+        $this->load->view('layout/admin_footer');
+    }
+
+    /**
+     * Daftar Pengiriman Data Transaksi
+     */
+    public function daftarpengiriman()
+    {
+        // Set session
+        $data['user'] = $this->db->get_where('mspengguna', ['email' => $this->session->userdata('email')])->row_array();
+
+        // Set title page
+        $data['title'] = 'Daftar Pengiriman';
+
+        // Menampilkan tampilan
+        $this->load->view('layout/admin_header', $data);
+        $this->load->view('kurir/daftarpengiriman', $data);
+        $this->load->view('layout/admin_footer');
+    }
+
+    /**
+     * Konfirmasi Pengiriman Data Transaksi
+     */
+    public function konfirmasipengiriman()
+    {
+        // Set session
+        $data['user'] = $this->db->get_where('mspengguna', ['email' => $this->session->userdata('email')])->row_array();
+
+        // Set title page
+        $data['title'] = 'Konfirmasi Pengiriman';
+
+        // Menampilkan tampilan
+        $this->load->view('layout/admin_header', $data);
+        $this->load->view('kurir/konfirmasipengiriman', $data);
+        $this->load->view('layout/admin_footer');
     }
 
     /**

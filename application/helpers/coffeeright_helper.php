@@ -35,3 +35,68 @@ function check_role($id_role)
         return 'Kurir';
     }
 }
+
+function hariIndo($hari)
+{
+    switch ($hari) {
+        case 'Sunday':
+            return 'Minggu';
+        case 'Monday':
+            return 'Senin';
+        case 'Tuesday':
+            return 'Selasa';
+        case 'Wednesday':
+            return 'Rabu';
+        case 'Thursday':
+            return 'Kamis';
+        case 'Friday':
+            return 'Jumat';
+        case 'Saturday':
+            return 'Sabtu';
+        default:
+            return 'hari tidak valid';
+    }
+}
+
+function bulanIndo($bulan)
+{
+    switch ($bulan) {
+        case 'January':
+            return 'Januari';
+        case 'February':
+            return 'Februari';
+        case 'March':
+            return 'Maret';
+        case 'April':
+            return 'April';
+        case 'May':
+            return 'Mei';
+        case 'June':
+            return 'Juni';
+        case 'July':
+            return 'Juli';
+        case 'August':
+            return 'Agustus';
+        case 'September':
+            return 'September';
+        case 'October':
+            return 'Oktober';
+        case 'November':
+            return 'November';
+        case 'December':
+            return 'Desember';
+        default:
+            return 'bulan tidak valid';
+    }
+}
+
+function randomString($length = 3)
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}

@@ -21,35 +21,37 @@
                             <a class="btn btn-primary" href="<?= site_url('subkategori/add') ?>">Tambah</a>
                         </div>
                     </div>
-                    <div class="datatable">
-                        <table class="table table-bordered table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Deskripsi</th>
-                                    <th>Kategori</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $num = 1; ?>
-                                <?php foreach ($mssubkategori as $subkategori) : ?>
+                    <div class="table-responsive pt-2">
+                        <div class="datatable">
+                            <table class="table table-bordered table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
                                     <tr>
-                                        <td> <?= $num++; ?> </td>
-                                        <td> <?= $subkategori->deskripsi_subkategori; ?> </td>
-                                        <td> <?php foreach ($kategori as $row){
-													if ($subkategori->id_kategori == $row->id_kategori){
-														echo $row->deskripsi_kategori;
-													}
-												}?> </td>
-                                        <td>
-                                            <a href="<?php echo site_url('subkategori/edit/' . $subkategori->id_subkategori) ?>" data-toggle="tooltip" title="Ubah" class="btn btn-datatable btn-icon btn-transparent-dark mr-2" te><i data-feather="edit"></i></a>
-                                            <a onclick="deleteConfirm('<?= site_url('subkategori/delete/' . $subkategori->id_subkategori) ?>')" data-toggle="tooltip" title="Hapus" class="btn btn-datatable btn-icon btn-transparent-dark mr-2" te><i data-feather="trash-2"></i></a>
-                                        </td>
+                                        <th>No</th>
+                                        <th>Deskripsi</th>
+                                        <th>Kategori</th>
+                                        <th>Aksi</th>
                                     </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php $num = 1; ?>
+                                    <?php foreach ($mssubkategori as $subkategori) : ?>
+                                        <tr>
+                                            <td> <?= $num++; ?> </td>
+                                            <td> <?= $subkategori->deskripsi_subkategori; ?> </td>
+                                            <td> <?php foreach ($kategori as $row) {
+                                                        if ($subkategori->id_kategori == $row->id_kategori) {
+                                                            echo $row->deskripsi_kategori;
+                                                        }
+                                                    } ?> </td>
+                                            <td>
+                                                <a href="<?php echo site_url('subkategori/edit/' . $subkategori->id_subkategori) ?>" data-toggle="tooltip" title="Ubah" class="btn btn-datatable btn-icon btn-transparent-dark mr-2" te><i data-feather="edit"></i></a>
+                                                <a onclick="deleteConfirm('<?= site_url('subkategori/delete/' . $subkategori->id_subkategori) ?>')" data-toggle="tooltip" title="Hapus" class="btn btn-datatable btn-icon btn-transparent-dark mr-2" te><i data-feather="trash-2"></i></a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
