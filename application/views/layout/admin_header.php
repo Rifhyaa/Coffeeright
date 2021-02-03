@@ -100,7 +100,7 @@
                         <div class="sidenav-menu-heading">Core</div>
                         <!-- Sidenav Accordion (Dashboard)-->
                         <a class="nav-link collapsed <?= ($this->uri->segment(2) == 'dashboard' ? 'active' : '') ?>" href="<?= base_url('user/dashboard'); ?>">
-                            <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                            <div class="nav-link-icon"><i class="fas fa-fw fa-tachometer-alt"></i></div>
                             Dashboards
                         </a>
                         <!-- Sidenav Heading (Table)-->

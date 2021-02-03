@@ -3,9 +3,39 @@
     * Copyright 2013-2020 Start Bootstrap
     * Licensed under SEE_LICENSE (https://github.com/StartBootstrap/sb-admin-pro/blob/master/LICENSE)
     */
-    (function ($) {
+(function ($) {
     "use strict";
 
+    /*
+    // Datatable - master
+    $('#dataTable').DataTable({
+        "language": {
+            "lengthMenu": "_MENU_ Data per halaman",
+            "info": "Menampilkan _START_ sampai _END_ dari _TOTAL_ entries",
+            "zeroRecords": "Tidak ada data.",
+            "search": "Pencarian :",
+            "infoFiltered": "(tersaring dari total _MAX_ data)",
+            "paginate": {
+                "previous": "Sebelumnya",
+                "next": "Selanjutnya"
+            }
+        },
+    });
+
+    $('#master-data2').DataTable({
+        "language": {
+            "lengthMenu": "_MENU_ Data per halaman",
+            "info": "Menampilkan _START_ sampai _END_ dari _TOTAL_ entries",
+            "zeroRecords": "Tidak ada data.",
+            "search": "Pencarian :",
+            "infoFiltered": "(tersaring dari total _MAX_ data)",
+            "paginate": {
+                "previous": "Sebelumnya",
+                "next": "Selanjutnya"
+            }
+        },
+    });
+*/
     // Enable Bootstrap tooltips via data-attributes globally
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -50,8 +80,8 @@
             target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
             if (target.length) {
                 $("html, body").animate({
-                        scrollTop: target.offset().top - 81
-                    },
+                    scrollTop: target.offset().top - 81
+                },
                     200
                 );
                 return false;
