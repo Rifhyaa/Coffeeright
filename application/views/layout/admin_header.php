@@ -172,6 +172,11 @@
                             <div class="nav-link-icon"><i class="fas fa-fw fa-dolly"></i></div>
                             Barang Keluar
                         </a>
+                        <!-- Sidenav Link (Barang Keluar)-->
+                        <a class="nav-link <?= ($this->uri->segment(1) == 'trkasir' ? 'active' : '') ?>" href="<?= base_url('trkasir'); ?>">
+                            <div class="nav-link-icon"><i class="fas fa-fw fa-dolly"></i></div>
+                            Kasir
+                        </a>
                         <!-- Sidenav Heading (Pengguna Aplikasi)-->
                         <div class="sidenav-menu-heading">Pengguna</div>
                         <!-- Sidenav Link (User)-->

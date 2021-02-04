@@ -57,7 +57,7 @@
 <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" crossorigin="anonymous"></script>
 <script src="<?= base_url('assets/'); ?>demo/date-range-picker-demo.js"></script>
-
+<script src="<?= base_url('assets/js/jquery.priceformat.min.js'); ?>"></script>
 <script>
     function deleteConfirm(url) {
         $('#btn-delete').attr('href', url);
@@ -67,6 +67,12 @@
     $('.custom-file-input').on('change', function() {
         let fileName = $(this).val().split('\\').pop();
         $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
+
+    $('.priceformat').priceFormat({
+        prefix: 'Rp',
+        centsLimit: 0,
+        thousandsSeparator: '.'
     });
 </script>
 

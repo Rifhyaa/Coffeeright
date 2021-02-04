@@ -166,7 +166,7 @@ class barangmasuk extends CI_Controller
         // Set title page
         $data['title'] = 'Transaksi Barang Masuk';
 
-        $id_trmasuk = date('YmdHis');
+        $id_trmasuk = date('YmdHis') . randomString();
         $barang_masuk = $this->Barangmasuk_model;
         $produk = $this->Produk_model;
 
