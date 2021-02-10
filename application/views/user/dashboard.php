@@ -31,7 +31,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
-                                    <div class="small font-weight-bold text-primary mb-1">User</div>
+                                    <div class="small font-weight-bold text-primary mb-1">Penguna</div>
                                     <div class="h4"><?= $totalUser; ?></div>
                                 </div>
                                 <div class="ml-2"><i class="fas fa-user-tie fa-2x text-gray-200"></i></div>
@@ -73,8 +73,8 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1">
-                                    <div class="small font-weight-bold text-info mb-1">Ulasan</div>
-                                    <div class="h4"><?= $totalUlasan; ?></div>
+                                    <div class="small font-weight-bold text-info mb-1">Kota</div>
+                                    <div class="h4"><?= $totalKota; ?></div>
                                 </div>
                                 <div class="ml-2"><i class="fas fa-percentage fa-2x text-gray-200"></i></div>
                             </div>
@@ -83,108 +83,112 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <!-- Illustration card example-->
+                <div class="col-lg-6 mb-4">
                     <div class="card mb-4">
-                        <div class="card-body text-center p-5">
-                            <img class="img-fluid mb-5" src="<?= base_url('/'); ?>assets/img/illustrations/data-report.svg" />
-                            <h4>Report generation</h4>
-                            <p class="mb-4">Ready to get started? Let us know now! It&apos;s time to start building that dashboard you&apos;ve been waiting to create!</p>
-                            <a class="btn btn-primary p-3" href="#!">Continue</a>
+                        <div class="card-header">
+                            Daftar 10 Produk Terlaris
                         </div>
-                    </div>
-                    <!-- Report summary card example-->
-                    <div class="card mb-4">
-                        <div class="card-header border-bottom-0">Affiliate Reports</div>
-                        <div class="list-group list-group-flush small">
-                            <a class="list-group-item list-group-item-action" href="#!">
-                                <i class="fas fa-dollar-sign fa-fw text-blue mr-2"></i>
-                                Earnings Reports
-                            </a>
-                            <a class="list-group-item list-group-item-action" href="#!">
-                                <i class="fas fa-tag fa-fw text-purple mr-2"></i>
-                                Average Sale Price
-                            </a>
-                            <a class="list-group-item list-group-item-action" href="#!">
-                                <i class="fas fa-mouse-pointer fa-fw text-green mr-2"></i>
-                                Engagement (Clicks &amp; Impressions)
-                            </a>
-                            <a class="list-group-item list-group-item-action" href="#!">
-                                <i class="fas fa-percentage fa-fw text-yellow mr-2"></i>
-                                Conversion Rate
-                            </a>
-                            <a class="list-group-item list-group-item-action" href="#!">
-                                <i class="fas fa-chart-pie fa-fw text-pink mr-2"></i>
-                                Segments
-                            </a>
-                        </div>
-                        <div class="card-footer border-top-0">
-                            <a class="text-xs d-flex align-items-center justify-content-between" href="#!">
-                                View More Reports
-                                <i class="fas fa-long-arrow-alt-right"></i>
-                            </a>
+                        <div class="card-body">
+                            <div class="datatable">
+                                <table class="table table-hover table-striped" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr class="text-blue">
+                                            <th>No</th>
+                                            <th>Nama Produk</th>
+                                            <th>Jumlah</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $num = 1; ?>
+                                        <?php foreach ($topProduk as $produk) : ?>
+                                            <tr>
+                                                <td> <?= $num++; ?> </td>
+                                                <td> <?= $produk->nama_produk; ?> </td>
+                                                <td> <?= $produk->Jumlah; ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8 mb-4">
-                    <!-- Area chart example-->
+                <div class="col-lg-6 mb-4">
                     <div class="card mb-4">
-                        <div class="card-header">Revenue Summary</div>
+                        <div class="card-header">
+                            Daftar Produk Habis
+                        </div>
                         <div class="card-body">
-                            <div class="chart-area"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <!-- Bar chart example-->
-                            <div class="card h-100">
-                                <div class="card-header">Sales Reporting</div>
-                                <div class="card-body d-flex flex-column justify-content-center">
-                                    <div class="chart-bar"><canvas id="myBarChart" width="100%" height="30"></canvas></div>
-                                </div>
-                                <div class="card-footer">
-                                    <a class="text-xs d-flex align-items-center justify-content-between" href="#!">
-                                        View More Reports
-                                        <i class="fas fa-long-arrow-alt-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <!-- Pie chart example-->
-                            <div class="card h-100">
-                                <div class="card-header">Traffic Sources</div>
-                                <div class="card-body">
-                                    <div class="chart-pie mb-4"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
-                                    <div class="list-group list-group-flush">
-                                        <div class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2">
-                                            <div class="mr-3">
-                                                <i class="fas fa-circle fa-sm mr-1 text-blue"></i>
-                                                Direct
-                                            </div>
-                                            <div class="font-weight-500 text-dark">55%</div>
-                                        </div>
-                                        <div class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2">
-                                            <div class="mr-3">
-                                                <i class="fas fa-circle fa-sm mr-1 text-purple"></i>
-                                                Social
-                                            </div>
-                                            <div class="font-weight-500 text-dark">15%</div>
-                                        </div>
-                                        <div class="list-group-item d-flex align-items-center justify-content-between small px-0 py-2">
-                                            <div class="mr-3">
-                                                <i class="fas fa-circle fa-sm mr-1 text-green"></i>
-                                                Referral
-                                            </div>
-                                            <div class="font-weight-500 text-dark">30%</div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="datatable">
+                                <table class="table table-hover table-striped" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr class="text-blue">
+                                            <th>No</th>
+                                            <th>Nama Produk</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php if ($produkHabis == null)
+                                            echo "<tr> 
+                                                    <td></td><td>Tidak ada produk yang habis</td>
+                                            </tr>"
+                                        ?>
+                                        <?php foreach ($produkHabis as $habis) : ?>
+                                            <tr>
+                                                <td> <?= $num++; ?> </td>
+                                                <td> <?= $habis->nama_produk; ?> </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card mb-4">
+                        <div class="card-header text-dark">
+                            Tipe Pemesanan
+                        </div>
+                        <div class="card-body">
+                            <div class="datatable">
+                                <table class="table table-hover table-striped" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr class="text-blue">
+                                            <th>No</th>
+                                            <th>Pemesanan</th>
+                                            <th>Jumlah</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Pemesanan Offline</td>
+                                            <td><?= $poffline; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Pemesanan Online</td>
+                                            <td><?= $ponline; ?></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card mb-4">
+                        <div class="card-header text-dark">Grafik Pemesanan</div>
+                        <div class="card-body">
+                            <div class="chart-pie mb-4"><canvas id="chartStatusPeminjaman" width="100%" height="500"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 </div>
@@ -213,13 +217,53 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="<?= base_url('assets/'); ?>js/scripts.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
-<script src="<?= base_url('assets/'); ?>/demo/chart-area-demo.js"></script>
+<!-- <script src="<?= base_url('assets/'); ?>/demo/chart-area-demo.js"></script>
 <script src="<?= base_url('assets/'); ?>/demo/chart-bar-demo.js"></script>
-<script src="<?= base_url('assets/'); ?>/demo/chart-pie-demo.js"></script>
+<script src="<?= base_url('assets/'); ?>/demo/chart-pie-demo.js"></script> -->
 <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" crossorigin="anonymous"></script>
 <script src="<?= base_url('assets/'); ?>/demo/date-range-picker-demo.js"></script>
 
+<script>
+    var jmlPesanan = document.getElementById('chartStatusPeminjaman').getContext('2d');
+    var dtStatus = [];
+    var dtCount = [];
+
+    dtStatus.push(" Pemesanan Offline");
+    dtCount.push(<?= $poffline; ?>);
+
+    dtStatus.push(" Pemesanan Online");
+    dtCount.push(<?= $ponline; ?>);
+
+
+    var adminChart = new Chart(jmlPesanan, {
+        type: 'doughnut',
+        data: {
+            labels: dtStatus,
+            datasets: [{
+                label: dtStatus,
+                backgroundColor: [
+                    '#0061F2', '#6900C7'
+                ],
+                borderColor: '#fff',
+                data: dtCount,
+            }],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutoutPercentage: '60',
+            legend: {
+                display: true,
+                position: 'right',
+                align: 'center',
+                labels: {
+                    fontColor: 'rgba(125, 125, 125, 1)'
+                }
+            },
+        }
+    });
+</script>
 </body>
 
 </html>

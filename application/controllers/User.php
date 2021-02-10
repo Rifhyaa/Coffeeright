@@ -63,7 +63,13 @@ class User extends CI_Controller
         $data['totalUser'] = $this->db->get_where('mspengguna', ['status' => 1])->num_rows();
         $data['totalProduk'] = $this->db->get_where('msproduk', ['status' => 1])->num_rows();
         $data['totalVendor'] = $this->db->get_where('msvendor', ['status' => 1])->num_rows();
-        $data['totalUlasan'] = $this->db->query('SELECT * FROM msulasan')->num_rows();
+        $data['totalKota'] = $this->db->query('SELECT * FROM mskota WHERE status = 1')->num_rows();
+
+        $data['topProduk'] = $this->db->query('SELECT * FROM view_top10produkterlaris')->result();
+        $data['produkHabis'] = $this->db->query('SELECT * FROM view_produkhabis')->result();
+
+        $data['poffline'] = $this->db->query('SELECT * FROM trkasir')->num_rows();
+        $data['ponline'] = $this->db->query('SELECT * FROM trpembelian')->num_rows();
 
         $this->load->view('layout/admin_header', $data);
         $this->load->view('user/dashboard', $data);
