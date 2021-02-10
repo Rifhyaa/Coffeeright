@@ -67,6 +67,7 @@ class Produk_model extends CI_Model
         $this->id_subkategori = $post["id_subkategori"];
         $this->harga_produk = $post["harga_produk"];
         $this->stok_produk = $post["stok_produk"];
+        // $this->foto = $post["foto"];
         $this->status = 1;
 
         $this->creaby = $user_session;

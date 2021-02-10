@@ -53,6 +53,22 @@
                             <input type="number" class="form-control <?= form_error('stok_produk') ? 'is-invalid' : '' ?>" name="stok_produk" value="<?= set_value('stok_produk'); ?>" placeholder="Stok"></input>
                             <?= form_error('stok_produk', '<small class="text-red">', '</small>'); ?>
                         </div>
+                        <div class="form-group row">
+                                <div class="col-sm-2">Gambar Produk</div>
+                                <div class="col-sm-10">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <img src="" class="img-thumbnail">
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="foto" name="foto">
+                                                <label class="custom-file-label" for="foto">Pilih File</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         <input class="btn btn-primary" type="submit" name="btn" value="Simpan" />
                         <a class="btn btn-outline-primary" href="<?= base_url('produk'); ?>">Kembali</a>
                     </form>

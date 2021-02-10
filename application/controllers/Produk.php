@@ -55,15 +55,43 @@ class Produk extends CI_Controller
         $validation = $this->form_validation;
         $validation->set_rules($produk->rules());
 
-        if ($validation->run()) {
-            $produk->save();
-            redirect('produk');
-        }
+    //     if ($validation->run()) {
+    //         $produk->save();
+    //         redirect('produk');
+    //     }
 
-        // Menampilkan tampilan
+    //     // Menampilkan tampilan
+    //     $this->load->view('layout/admin_header', $data);
+    //     $this->load->view('produk/add', $data);
+    //     $this->load->view('layout/admin_footer');
+    if ($this->form_validation->run() == false) {
         $this->load->view('layout/admin_header', $data);
         $this->load->view('produk/add', $data);
         $this->load->view('layout/admin_footer');
+    } 
+    else 
+    {
+        if (!empty($_FILES['foto']['name'])) {
+            $upload_image = $_FILES['foto']['name'];
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']     = '2048';
+            $config['upload_path'] = './assets/img/upload/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('foto')) {
+                $new_image = $this->upload->data('file_name');
+
+                if ($new_image != null) {
+                    $this->db->set('foto', $new_image);
+                }
+                $produk->save();
+                redirect('produk');
+            } else {
+                echo $this->upload->dispay_errors();
+            }
+        }
+    }
     }
 
     /**
@@ -88,18 +116,37 @@ class Produk extends CI_Controller
         $validation = $this->form_validation;
         $validation->set_rules($produk->rules());
 
-        if ($validation->run()) {
-            $produk->update();
-            redirect('produk');
-        }
-
         $data["produk"] = $produk->getById($id);
         if (!$data["produk"]) show_404();
 
-        // Menampilkan tampilan
-        $this->load->view('layout/admin_header', $data);
-        $this->load->view('produk/edit', $data);
-        $this->load->view('layout/admin_footer');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('layout/admin_header', $data);
+            $this->load->view('produk/edit', $data);
+            $this->load->view('layout/admin_footer');
+        } 
+        else 
+        {
+            if (!empty($_FILES['foto']['name'])) {
+                $upload_image = $_FILES['foto']['name'];
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size']     = '2048';
+                $config['upload_path'] = './assets/img/upload/';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('foto')) {
+                    $new_image = $this->upload->data('file_name');
+
+                    if ($new_image != null) {
+                        $this->db->set('foto', $new_image);
+                    }
+                    $produk->update();
+                    redirect('produk');
+                } else {
+                    echo $this->upload->dispay_errors();
+                }
+            }
+        }
     }
 
     /**

@@ -96,98 +96,112 @@
                             Messages
                             <span class="badge badge-success-soft text-success ml-auto">2 New!</span>
                         </a>
-                        <!-- Sidenav Menu Heading (Core)-->
-                        <div class="sidenav-menu-heading">Core</div>
-                        <!-- Sidenav Accordion (Dashboard)-->
-                        <a class="nav-link collapsed <?= ($this->uri->segment(2) == 'dashboard' ? 'active' : '') ?>" href="<?= base_url('user/dashboard'); ?>">
-                            <div class="nav-link-icon"><i class="fas fa-fw fa-tachometer-alt"></i></div>
-                            Dashboards
-                        </a>
-                        <!-- Sidenav Heading (Table)-->
-                        <div class="sidenav-menu-heading">Tabel</div>
-                        <!-- Sidenav Link (User)-->
-                        <a class="nav-link <?= ($this->uri->segment(1) == 'pengguna' ? 'active' : '') ?>" href="<?= base_url('pengguna'); ?>">
-                            <div class="nav-link-icon"><i class="fas fa-fw fa-user-tie"></i></div>
-                            Pengguna
-                        </a>
-                        <!-- Sidenav Link (Produk)-->
-                        <a class="nav-link <?= ($this->uri->segment(1) == 'produk' ? 'active' : '') ?>" href="<?= base_url('produk'); ?>">
-                            <div class="nav-link-icon"><i class="fas fa-fw fa-cubes"></i></div>
-                            Produk
-                        </a>
-                        <!-- Sidenav Link (Kategori)-->
-                        <a class="nav-link <?= ($this->uri->segment(1) == 'kategori' ? 'active' : '') ?>" href="<?= base_url('kategori'); ?>">
-                            <div class="nav-link-icon"><i class="fas fa-fw fa-list-ul"></i></div>
-                            Kategori
-                        </a>
-                        <!-- Sidenav Link (Sub Kategori)-->
-                        <a class="nav-link <?= ($this->uri->segment(1) == 'subkategori' ? 'active' : '') ?>" href="<?= base_url('subkategori'); ?>">
-                            <div class="nav-link-icon"><i class="fas fa-fw fa-sitemap"></i></div>
-                            Sub Kategori
-                        </a>
-                        <!-- Sidenav Link (Ulasan)-->
-                        <a class="nav-link <?= ($this->uri->segment(1) == 'ulasan' ? 'active' : '') ?>" href="<?= base_url('ulasan'); ?>">
-                            <div class="nav-link-icon"><i class="far fa-fw fa-sticky-note"></i></div>
-                            Ulasan
-                        </a>
-                        <!-- Sidenav Link (Vendor)-->
-                        <a class="nav-link <?= ($this->uri->segment(1) == 'vendor' ? 'active' : '') ?>" href="<?= base_url('vendor'); ?>">
-                            <div class="nav-link-icon"><i class="fas fa-fw fa-truck"></i></div>
-                            Vendor
-                        </a>
-                        <!-- Sidenav Link (Kota)-->
-                        <a class="nav-link <?= ($this->uri->segment(1) == 'kota' ? 'active' : '') ?>" href="<?= base_url('kota'); ?>">
-                            <div class="nav-link-icon"><i class="fas fa-fw fa-building"></i></div>
-                            Kota
-                        </a>
-                        <!-- Sidenav Heading (Transaksi)-->
-                        <div class="sidenav-menu-heading">Transaksi</div>
-                        <!-- Sidenav Link (Pengiriman)-->
-                        <a class="nav-link <?= ($this->uri->segment(2) == 'index' ? 'active' : '') ?>" href="<?= base_url('kurir'); ?>">
-                            <div class="nav-link-icon"><i class="fas fa-fw fa-shipping-fast"></i></div>
-                            Dashboard Si Kurir
-                        </a>
-                        <!-- Sidenav Link (Pengiriman)-->
-                        <a class="nav-link <?= ($this->uri->segment(2) == 'index' ? 'active' : '') ?>" href="<?= base_url('kurir/daftarpickup'); ?>">
-                            <div class="nav-link-icon"><i class="fas fa-fw fa-shipping-fast"></i></div>
-                            Daftar Pickup
-                        </a>
-                        <!-- Sidenav Link (Pengiriman)-->
-                        <a class="nav-link <?= ($this->uri->segment(2) == 'index' ? 'active' : '') ?>" href="<?= base_url('kurir/daftarpengiriman'); ?>">
-                            <div class="nav-link-icon"><i class="fas fa-fw fa-shipping-fast"></i></div>
-                            Daftar Pengiriman
-                        </a>
-                        <!-- Sidenav Link (Pengiriman)-->
-                        <a class="nav-link <?= ($this->uri->segment(2) == 'index' ? 'active' : '') ?>" href="<?= base_url('kurir/konfirmasipengiriman'); ?>">
-                            <div class="nav-link-icon"><i class="fas fa-fw fa-shipping-fast"></i></div>
-                            Konfirmasi Pengiriman
-                        </a>
-                        <!-- Sidenav Link (Barang Masuk)-->
-                        <a class="nav-link <?= ($this->uri->segment(2) == 'edit' ? 'active' : '') ?>" href="<?= base_url('barangmasuk'); ?>">
-                            <div class="nav-link-icon"><i class="fas fa-fw fa-truck-loading"></i></div>
-                            Barang Masuk
-                        </a>
-                        <!-- Sidenav Link (Barang Keluar)-->
-                        <a class="nav-link <?= ($this->uri->segment(2) == 'security' ? 'active' : '') ?>" href="<?= base_url('barangkeluar'); ?>">
-                            <div class="nav-link-icon"><i class="fas fa-fw fa-dolly"></i></div>
-                            Barang Keluar
-                        </a>
-                        <!-- Sidenav Link (Barang Keluar)-->
-                        <a class="nav-link <?= ($this->uri->segment(1) == 'trkasir' ? 'active' : '') ?>" href="<?= base_url('trkasir'); ?>">
-                            <div class="nav-link-icon"><i class="fas fa-fw fa-dolly"></i></div>
-                            Kasir
-                        </a>
+                        <?php if ($user['id_role'] == '1') : ?>
+                            <!-- Sidenav Menu Heading (Core)-->
+                            <div class="sidenav-menu-heading">Core</div>
+                            <!-- Sidenav Accordion (Dashboard)-->
+                            <a class="nav-link collapsed <?= ($this->uri->segment(2) == 'dashboard' ? 'active' : '') ?>" href="<?= base_url('user/dashboard'); ?>">
+                                <div class="nav-link-icon"><i class="fas fa-fw fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            <!-- Sidenav Heading (Table)-->
+                            <div class="sidenav-menu-heading">Tabel</div>
+                            <!-- Sidenav Link (User)-->
+                            <a class="nav-link <?= ($this->uri->segment(1) == 'pengguna' ? 'active' : '') ?>" href="<?= base_url('pengguna'); ?>">
+                                <div class="nav-link-icon"><i class="fas fa-fw fa-user-tie"></i></div>
+                                Pengguna
+                            </a>
+                            <!-- Sidenav Link (Produk)-->
+                            <a class="nav-link <?= ($this->uri->segment(1) == 'produk' ? 'active' : '') ?>" href="<?= base_url('produk'); ?>">
+                                <div class="nav-link-icon"><i class="fas fa-fw fa-cubes"></i></div>
+                                Produk
+                            </a>
+                            <!-- Sidenav Link (Kategori)-->
+                            <a class="nav-link <?= ($this->uri->segment(1) == 'kategori' ? 'active' : '') ?>" href="<?= base_url('kategori'); ?>">
+                                <div class="nav-link-icon"><i class="fas fa-fw fa-list-ul"></i></div>
+                                Kategori
+                            </a>
+                            <!-- Sidenav Link (Sub Kategori)-->
+                            <a class="nav-link <?= ($this->uri->segment(1) == 'subkategori' ? 'active' : '') ?>" href="<?= base_url('subkategori'); ?>">
+                                <div class="nav-link-icon"><i class="fas fa-fw fa-sitemap"></i></div>
+                                Sub Kategori
+                            </a>
+                            <!-- Sidenav Link (Ulasan)-->
+                            <a class="nav-link <?= ($this->uri->segment(1) == 'ulasan' ? 'active' : '') ?>" href="<?= base_url('ulasan'); ?>">
+                                <div class="nav-link-icon"><i class="far fa-fw fa-sticky-note"></i></div>
+                                Ulasan
+                            </a>
+                            <!-- Sidenav Link (Vendor)-->
+                            <a class="nav-link <?= ($this->uri->segment(1) == 'vendor' ? 'active' : '') ?>" href="<?= base_url('vendor'); ?>">
+                                <div class="nav-link-icon"><i class="fas fa-fw fa-truck"></i></div>
+                                Vendor
+                            </a>
+                            <!-- Sidenav Link (Kota)-->
+                            <a class="nav-link <?= ($this->uri->segment(1) == 'kota' ? 'active' : '') ?>" href="<?= base_url('kota'); ?>">
+                                <div class="nav-link-icon"><i class="fas fa-fw fa-building"></i></div>
+                                Kota
+                            </a>
+                            <!-- Sidenav Heading (Transaksi)-->
+                            <div class="sidenav-menu-heading">Transaksi</div>
+                            <!-- Sidenav Link (Kasir)-->
+                            <a class="nav-link <?= ($this->uri->segment(1) == 'trkasir' ? 'active' : '') ?>" href="<?= base_url('trkasir'); ?>">
+                                <div class="nav-link-icon"><i class="fas fa-fw fa-dolly"></i></div>
+                                Kasir
+                            </a>
+                            <!-- Sidenav Link (Barang Masuk)-->
+                            <a class="nav-link <?= ($this->uri->segment(1) == 'barangmasuk' ? 'active' : '') ?>" href="<?= base_url('barangmasuk'); ?>">
+                                <div class="nav-link-icon"><i class="fas fa-fw fa-truck-loading"></i></div>
+                                Barang Masuk
+                            </a>
+                            <!-- Sidenav Link (Barang Keluar)-->
+                            <a class="nav-link <?= ($this->uri->segment(1) == 'barangkeluar' ? 'active' : '') ?>" href="<?= base_url('barangkeluar'); ?>">
+                                <div class="nav-link-icon"><i class="fas fa-fw fa-dolly"></i></div>
+                                Barang Keluar
+                            </a>
+                            <!-- Sidenav Heading (Laporan)-->
+                            <div class="sidenav-menu-heading">Laporan</div>
+                            <!-- Sidenav Link (Laporan Peminjaman)-->
+                            <a class="nav-link" href="#">
+                                <div class="nav-link-icon"><i class="fas fa-fw fa-chart-bar"></i></div>
+                                Penjualan
+                            </a>
+                            <!-- Sidenav Link (Laporan Pengadaan)-->
+                            <a class="nav-link" href="#">
+                                <div class="nav-link-icon"><i class="fas fa-fw fa-chart-line"></i></div>
+                                Barang Masuk
+                            </a>
+
+                        <?php else : ?>
+                            <!-- Sidenav Menu Heading (Core)-->
+                            <div class="sidenav-menu-heading">Core</div>
+                            <a class="nav-link <?= ($this->uri->segment(2) == 'index' ? 'active' : '') ?>" href="<?= base_url('kurir'); ?>">
+                                <div class="nav-link-icon"><i class="fas fa-fw fa-shipping-fast"></i></div>
+                                Dashboard
+                            </a>
+                            <!-- Sidenav Heading (Transaksi)-->
+                            <div class="sidenav-menu-heading">Transaksi</div>
+                            <!-- Sidenav Link (Pengiriman)-->
+                            <a class="nav-link <?= ($this->uri->segment(2) == 'index' ? 'active' : '') ?>" href="<?= base_url('kurir/daftarpickup'); ?>">
+                                <div class="nav-link-icon"><i class="fas fa-fw fa-shipping-fast"></i></div>
+                                Daftar Pickup
+                            </a>
+                            <!-- Sidenav Link (Pengiriman)-->
+                            <a class="nav-link <?= ($this->uri->segment(2) == 'index' ? 'active' : '') ?>" href="<?= base_url('kurir/daftarpengiriman'); ?>">
+                                <div class="nav-link-icon"><i class="fas fa-fw fa-shipping-fast"></i></div>
+                                Daftar Pengiriman
+                            </a>
+                            <!-- Sidenav Link (Pengiriman)-->
+                            <a class="nav-link <?= ($this->uri->segment(2) == 'index' ? 'active' : '') ?>" href="<?= base_url('kurir/konfirmasipengiriman'); ?>">
+                                <div class="nav-link-icon"><i class="fas fa-fw fa-shipping-fast"></i></div>
+                                Konfirmasi Pengiriman
+                            </a>
+                        <?php endif; ?>
                         <!-- Sidenav Heading (Pengguna Aplikasi)-->
                         <div class="sidenav-menu-heading">Pengguna</div>
                         <!-- Sidenav Link (User)-->
                         <a class="nav-link <?= ($this->uri->segment(2) == 'index' ? 'active' : '') ?>" href="<?= base_url('user'); ?>">
                             <div class="nav-link-icon"><i class="fas fa-fw fa-user-tie"></i></div>
                             Profil Saya
-                        </a>
-                        <!-- Sidenav Link (User)-->
-                        <a class="nav-link <?= ($this->uri->segment(2) == 'edit' ? 'active' : '') ?>" href="<?= base_url('user/edit'); ?>">
-                            <div class="nav-link-icon"><i class="fas fa-fw fa-user-edit"></i></div>
-                            Ubah Profil
                         </a>
                         <!-- Sidenav Link (User)-->
                         <a class="nav-link <?= ($this->uri->segment(2) == 'security' ? 'active' : '') ?>" href="<?= base_url('user/security'); ?>">

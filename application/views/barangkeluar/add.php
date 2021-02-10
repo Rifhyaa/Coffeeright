@@ -48,7 +48,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label">Keterangan<span style="color: red">*</span></label>
-                            <textarea rows="4" class="form-control  <?= form_error('keterangan') ? 'is-invalid' : '' ?>" name="keterangan" placeholder="Keterangan"><?= set_value('keterangan'); ?></textarea>
+                            <textarea rows="4" class="form-control  <?= form_error('keterangan') ? 'is-invalid' : '' ?>" required name="keterangan" placeholder="Keterangan"><?= set_value('keterangan'); ?></textarea>
                             <?= form_error('keterangan', '<small class="text-red">', '</small>'); ?>
                         </div>
 
