@@ -25,7 +25,7 @@ class Kurir extends CI_Controller
         $data['user'] = $this->db->get_where('mspengguna', ['email' => $this->session->userdata('email')])->row_array();
 
         // Set title page
-        $data['title'] = 'List Kota';
+        $data['title'] = 'Dashboard';
 
         // Set Data Dashboard
         $data['totalUser'] = $this->db->get_where('mspengguna', ['status' => 1])->num_rows();

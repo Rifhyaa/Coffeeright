@@ -27,7 +27,7 @@
                                         <?= form_error('password', '<small class="text-red">', '</small>'); ?>
                                     </div>
                                     <!-- Form Group (forgot password link)-->
-                                    <div class="form-group"><a class="small" href="auth-password-social.html">Forgot your password?</a></div>
+                                    <div class="form-group"><a class="small" href="#">Forgot your password?</a></div>
                                     <!-- Form Group (login box)-->
                                     <div class="form-group d-flex align-items-center justify-content-between mb-0">
                                         <div class="custom-control custom-control-solid custom-checkbox">
