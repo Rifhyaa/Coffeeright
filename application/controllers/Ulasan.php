@@ -8,6 +8,10 @@ class Ulasan extends CI_Controller
     {
         parent::__construct();
         $this->load->model("Ulasan_model");
+        $this->load->model("TransBeli_model");
+        $this->load->model("Keranjang_model");
+        $this->load->model("DetilBeli_model");
+        $this->load->model("Produk_model");
         $this->load->library('form_validation');
     }
 
@@ -33,7 +37,7 @@ class Ulasan extends CI_Controller
     /**
      * Tambah Data Ulasan
      */
-    public function add()
+    public function add($id)
     {
         // Set session
         $data['user'] = $this->db->get_where('mspengguna', ['email' => $this->session->userdata('email')])->row_array();
@@ -43,19 +47,30 @@ class Ulasan extends CI_Controller
         $data['id_pengguna'] = $this->Ulasan_model->getAllPengguna();
         $data['id_produk'] = $this->Ulasan_model->getAllProduk();
 
-        $ulasan = $this->Ulasan_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($ulasan->rules());
+        // Set data product
+        $data['produk'] = $this->Produk_model->getById($id);
 
-        if ($validation->run()) {
-            $ulasan->save();
-            redirect('ulasan');
-        }
+
+        // $ulasan = $this->Ulasan_model;
+        // $validation = $this->form_validation;
+        // $validation->set_rules($ulasan->rules());
+
+        // if ($validation->run()) {
+        //     $ulasan->save();
+        //     redirect('ulasan');
+        // }
 
         // Menampilkan tampilan
-        $this->load->view('layout/admin_header', $data);
-        $this->load->view('ulasan/add', $data);
-        $this->load->view('layout/admin_footer');
+        $this->load->view('layout/cust_header', $data);
+        $this->load->view('layout/cust_breadcrumb', $data);
+        $this->load->view('ulasan/tambah', $data);
+        $this->load->view('layout/cust_footer');
+    }
+
+    public function tambah()
+    {
+        $this->Ulasan_model->save();
+        redirect('TransaksiBeli');
     }
 
     /**

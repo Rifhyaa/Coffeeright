@@ -6,6 +6,7 @@ class Keranjang extends CI_Controller
     {
         parent::__construct();
         $this->load->model("Keranjang_model");
+        $this->load->model("Produk_model");
         $this->load->library('form_validation');
 
         // Cek User sudah login belum
@@ -27,14 +28,18 @@ class Keranjang extends CI_Controller
         $data["mskeranjang"] = $this->Keranjang_model->getByUser($this->session->userdata('id_pengguna'));
 
         // Set data product
-        $data['produk'] = $this->Keranjang_model->getProductByKeranjang($this->session->userdata('id_pengguna'));
+        $data['produk'] = $this->Produk_model->getAll();
 
         // Set total keranjang
         $data['total'] = $this->Keranjang_model->getTotal($this->session->userdata('id_pengguna'));
 
+        // Set banyak produk
+        $data['count'] = $this->Keranjang_model->getCount($this->session->userdata('id_pengguna'));
+
         //var_dump($data);
         // Menampilkan tampilan
         $this->load->view('layout/cust_header', $data);
+        $this->load->view('layout/cust_breadcrumb', $data);
         $this->load->view('keranjang/list', $data);
         $this->load->view('layout/cust_footer');
     }
@@ -55,14 +60,18 @@ class Keranjang extends CI_Controller
         $jumlah = $keranjang->qty;
         $harga = $produk->harga_produk;
 
-        //tambahkan jumlah produk dan harga total
-        $keranjang->qty = $jumlah + 1;
-        $keranjang->total_harga = $keranjang->qty * $harga;
+        if (($jumlah + 1) <= $produk->stok_produk) {
+            //tambahkan jumlah produk dan harga total
+            $keranjang->qty = $jumlah + 1;
+            $keranjang->total_harga = $keranjang->qty * $harga;
 
-        //update table keranjang
-        $model->update($keranjang);
-
-        redirect(site_url('keranjang'));
+            //update table keranjang
+            $model->update($keranjang);
+            redirect(site_url('keranjang'));
+        } else {
+            //$alert = "<script>alert('Maaf, Jumlah yang anda minta melebihi stok yang tersedia')</script>";
+            redirect(site_url('keranjang'));
+        }
     }
 
     public function minQty(int $id)
@@ -81,12 +90,18 @@ class Keranjang extends CI_Controller
         $jumlah = $keranjang->qty;
         $harga = $produk->harga_produk;
 
-        //tambahkan jumlah produk dan harga total
-        $keranjang->qty = $jumlah - 1;
-        $keranjang->total_harga = $keranjang->qty * $harga;
+        if (($jumlah - 1) > 0) {
+            //kurang jumlah produk dan harga total
+            $keranjang->qty = $jumlah - 1;
+            $keranjang->total_harga = $keranjang->qty * $harga;
 
-        //update table keranjang
-        $model->update($keranjang);
+            //update table keranjang
+            $model->update($keranjang);
+            redirect(site_url('keranjang'));
+        } else {
+            //maka hapus data keranjang
+            $this->delete($keranjang->id_keranjang);
+        }
 
         redirect(site_url('keranjang'));
     }

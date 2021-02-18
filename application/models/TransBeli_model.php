@@ -5,6 +5,7 @@ class TransBeli_model extends CI_Model
     private $_table = "trpembelian";
     private $_keranjang = "mskeranjang";
     private $_pengguna = "mspengguna";
+    private $_pengiriman = "trpengiriman";
 
     public function getAll()
     {
@@ -18,7 +19,11 @@ class TransBeli_model extends CI_Model
 
     public function getByUser()
     {
-        return $this->db->get_where($this->_table, ["id_pengguna" => $this->session->userdata('id_pengguna')])->result();
+        $user = $this->session->userdata('id_pengguna');
+        $data = $this->db->query("SELECT * FROM trpembelian WHERE id_pengguna = $user ORDER BY(tgl_transaksi) DESC");
+        // return $this->db->get_where($this->_table, ["id_pengguna" => $this->session->userdata('id_pengguna')])->result();
+
+        return $data->result();
     }
 
     public function getOngkir($id)
@@ -33,14 +38,26 @@ class TransBeli_model extends CI_Model
         return $ongkir;
     }
 
-    public function getTotal($id)
+    public function getTotalById($id)
     {
-        $total = $this->db->query("SELECT SUM(mk.total_harga) as sumharga FROM mskeranjang mk WHERE mk.id_pengguna = '$id'")->row();
+        $data = $this->db->get_where($this->_table, ["id_trpembelian" => $id])->row();
 
-        $ongkir = $this->getOngkir($id);
+        return $data->total_harga;
+    }
 
-        $grandTotal = $total->sumharga + $ongkir;
-        return $grandTotal;
+    public function getTotalJualProduk($id)
+    {
+        $produk = $this->db->query("SELECT SUM(jumlah_produk) AS total FROM detail_trpembelian WHERE id_produk = $id")->row();
+
+        return $produk->total;
+    }
+
+    public function getPengirimanByid($id)
+    {
+        // $data = $this->db->get_where($this->_pengiriman, ["id_transaksi" => $id])->result();
+        // $data = $this->$data->order_by("creadate", "desc");
+        $data = $this->db->query("SELECT * FROM trpengiriman WHERE id_transaksi = '$id' ORDER BY(creadate) DESC");
+        return $data->result();
     }
 
     public function save()

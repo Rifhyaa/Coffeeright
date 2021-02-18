@@ -6,6 +6,7 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('Pengguna_model');
         $this->load->library('form_validation');
 
         // Cek User sudah login belum
@@ -49,6 +50,32 @@ class User extends CI_Controller
         $this->load->view('layout/admin_header', $data);
         $this->load->view('user/edit', $data);
         $this->load->view('layout/admin_footer');
+    }
+
+    public function editCust()
+    {
+        // Set session
+        $data['user'] = $this->db->get_where('mspengguna', ['email' => $this->session->userdata('email')])->row_array();
+
+        // Set title page
+        $data['title'] = 'Profil';
+
+        $this->load->view('layout/cust_header', $data);
+        $this->load->view('layout/cust_breadcrumb', $data);
+        $this->load->view('user/editCust', $data);
+        $this->load->view('layout/cust_footer');
+    }
+
+    public function editPost()
+    {
+        $user = $this->Pengguna_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($user->rules());
+
+        if ($validation->run()) {
+            $user->update();
+            redirect('user/editCust');
+        }
     }
 
     public function dashboard()

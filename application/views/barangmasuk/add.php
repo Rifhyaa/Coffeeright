@@ -48,7 +48,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label">Vendor<span style="color: red">*</span></label>
-                            <select class="form-control <?= form_error('id_vendor') ? 'is-invalid' : '' ?>" name="id_vendor" id="id_vendor">
+                            <select class="form-control <?= form_error('id_vendor') ? 'is-invalid' : '' ?>" required name="id_vendor" id="id_vendor">
                                 <option value="">-- Pilih Vendor --</option>
                                 <?php foreach ($id_vendor as $value) : ?>
                                     <option value='<?= $value->id_vendor ?>' <?= ($value->id_vendor == set_value("id_vendor") ? 'selected' : ''); ?>><?= $value->nama_vendor ?></option>";

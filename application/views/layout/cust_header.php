@@ -43,31 +43,43 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
             <h1 class="logo mr-auto">
-                <a href="#header" class="scrollto"> Coffee <i class="fas fa-mug-hot"></i> Rights</a>
+                <a href="<?= base_url('Customer'); ?>" class="scrollto"> Coffee <i class="fas fa-mug-hot"></i> Right</a>
             </h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="#header" class="logo mr-auto scrollto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
             <nav class="nav-menu">
                 <ul>
-                    <!-- <li><a href="#tentang">Tentang</a></li> -->
-                    <!-- <li></li> -->
-                    <li class="drop-down ul">
-                        <a href="#"><i class="fas fa-bars" style="color: white"></i></a>
-                        <ul>
-                            <li><a href="<?= base_url('produk'); ?>">Info Akun</a></li>
-                            <li><a href="<?= base_url('Catalog'); ?>">Cari Produk</a></li>
-                            <li><a href="<?= base_url('keranjang'); ?>">Keranjang</a></li>
-                            <li><a href="<?= base_url('TransaksiBeli'); ?>">Pesanan Saya</a></li>
-                        </ul>
+                    <li class="justify-content-center align-self-center">
+                        <div class="row form-rounded" style="background-color: white; margin-right: 20px;">
+                            <div class="col-lg-15 ">
+                                <form action="" method="post">
+                                    <input type="text" name="email" style="border:none; border-radius: 1rem;">
+                                    <button type="submit" class="btn btn-prime form-rounded"><i class="fas fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
                     </li>
-                    <li>
-                        <a>
-                            <i class="fas fa-user" style="color:white"></i>
+                    <li class="justify-content-center align-self-center">
+                        <a href="<?= base_url('keranjang'); ?>">
+                            <i class="fas fa-shopping-cart" style="color:white"></i>
                         </a>
                     </li>
-                    <li>
-                        <a style="color:white"><?= $user['nama_pengguna']; ?></a>
+                    <li class="justify-content-center align-self-center">
+                        <i class="fas fa-user" style="color:white"></i>
+                    </li>
+                    <li class="drop-down ul justify-content-center align-self-center">
+                        <?php if ($user['nama_pengguna'] != null) { ?>
+                            <a style="color:white"><?= $user['nama_pengguna']; ?></a>
+                        <?php } else { ?>
+                            <a style="color:white" href="<?= base_url('auth'); ?>">Login</a>
+                        <?php } ?>
+                        <ul>
+                            <li><a href="<?= base_url('User/editCust'); ?>">Info Akun</a></li>
+                            <li><a href="<?= base_url('Catalog'); ?>">Cari Produk</a></li>
+                            <li><a href="<?= base_url('TransaksiBeli'); ?>">Pesanan Saya</a></li>
+                            <li><a href="<?= base_url('Auth/logout'); ?>">Keluar</a></li>
+                        </ul>
                     </li>
                 </ul>
             </nav>
@@ -80,22 +92,4 @@
             <div class="layoutSidenav_content">
                 <div class="container-fluid">
                     <div class="card mb-4">
-                        <!-- ======= CTA ======= -->
-                        <div id="cta" class="cta">
-                            <!-- <div class="container"></div> -->
-                        </div>
-                        <!-- End cta -->
-                        <!-- ======= Breadcrumbs ======= -->
-                        <div class="breadcrumbs">
-                            <div class="container">
-                                <ol>
-                                    <li><a href="">Home</a></li>
-                                    <li><?php echo $title ?></li>
-                                </ol>
-                                <h2><?php echo $title ?></h2>
-                            </div>
-                        </div>
-                        <!-- End Breadcrumbs -->
                         <!-- ======= content ======= -->
-
-                        <!-- End Content -->

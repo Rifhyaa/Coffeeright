@@ -19,9 +19,9 @@
                 </div>
                 <div class="card-body">
                     <div class="row form-group">
-                        <div class="col-sm-12 col-md-6">
+                        <!-- <div class="col-sm-12 col-md-6">
                             <a class="btn btn-primary" href="<?= site_url('ulasan/add') ?>">Tambah</a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="table-responsive pt-2">
                         <div class="datatable">

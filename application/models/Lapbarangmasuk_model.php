@@ -13,7 +13,7 @@ class Lapbarangmasuk_model extends CI_Model
      */
     public function getAll()
     {
-        return $this->db->get_where($this->_table)->result();
+        return $this->db->query('SELECT * FROM view_laporanbarangmasuk')->result();
     }
 
     /**

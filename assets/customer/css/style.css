@@ -26,6 +26,52 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway", sans-serif;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .form-control {
+    transition: none;
+  }
+}
+.form-control::-ms-expand {
+  background-color: transparent;
+  border: 0;
+}
+.form-control:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #69707a;
+}
+.form-control:focus {
+  color: #69707a;
+  background-color: #fff;
+  border-color: transparent;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(246, 176, 36, 0.25);
+}
+.form-control::-moz-placeholder {
+  color: #a7aeb8;
+  opacity: 1;
+}
+.form-control:-ms-input-placeholder {
+  color: #a7aeb8;
+  opacity: 1;
+}
+.form-control::placeholder {
+  color: #a7aeb8;
+  opacity: 1;
+}
+.form-control:disabled, .form-control[readonly] {
+  background-color: #e0e5ec;
+  opacity: 1;
+}
+
+.form-rounded {
+  border-radius: 1rem;
+  box-shadow: 0 0 0 0.2rem rgba(221, 121, 242, 0.25);
+}
+
+.btn-prime {
+  background-color: rgba(221, 161, 94, 0.9); 
+  color:white;
+}
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -45,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 40px;
   height: 40px;
   border-radius: 50px;
-  background: #0880e8;
+  background: #a86f00;
   color: #fff;
   transition: all 0.4s;
 }
@@ -600,6 +646,10 @@ section {
 /*--------------------------------------------------------------
 # Icon Boxes
 --------------------------------------------------------------*/
+.img-account-profile {
+  height: 10rem;
+}
+
 .icon-boxes {
   padding-top: 0;
 }

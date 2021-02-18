@@ -240,3 +240,33 @@
   });
 
 })(jQuery);
+
+$(document).ready(function() {
+  $(".btnStar").on("click", function() {
+      $("#rating").val($(this).data("nilai"));
+      console.log(1);
+      console.log($("#rating"));
+      for (var i = 1; i <= 1; i++) {
+          $("#star" + i).attr({
+              class: 'fas fa-star fa-2x',
+              style: 'color:yellow'
+          });
+      }
+      for (var i = 1 + 1; i <= 5; i++) {
+          $("#star" + i).attr({
+              class: 'far fa-star fa-2x',
+              style: 'color:yellow'
+          });
+      }
+  })
+})
+
+function rateSelected() {
+  var rate = $("#rating").val();
+  for (var i = 1; i <= rate; i++) {
+      $("#star" + i).attr({
+          class: 'fas fa-star fa-2x',
+          style: 'color:yellow'
+      });
+  }
+}

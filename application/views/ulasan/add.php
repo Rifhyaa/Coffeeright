@@ -19,7 +19,7 @@
                     Form Ulasan
                 </div>
                 <div class="card-body">
-                    <form action="<?php echo site_url('ulasan/add') ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo site_url('Ulasan/add') ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label class="control-label">Ulasan<span style="color: red">*</span></label>
                             <textarea rows="4" class="form-control  <?= form_error('deskripsi_ulasan') ? 'is-invalid' : '' ?>" name="deskripsi_ulasan" placeholder="Ulasan"><?= set_value("deskripsi_ulasan"); ?></textarea>

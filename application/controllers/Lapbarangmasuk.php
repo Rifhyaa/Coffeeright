@@ -11,6 +11,7 @@ class Lapbarangmasuk extends CI_Controller
         $this->load->model("Pengguna_model");
         $this->load->model("Produk_model");
         $this->load->library('form_validation');
+        //$this->load->library('pdf');
 
         // Cek User sudah login belum
         is_logged_in();
@@ -24,16 +25,7 @@ class Lapbarangmasuk extends CI_Controller
         // Set title page
         $data['title'] = 'List Transaksi Barang Masuk';
 
-        $data["trbarangmasuk"] = $this->Lapbarangmasuk_model->getAll();
-		
-		$pengguna = $this->Pengguna_model->getAll();
-		$data['pengguna'] = $pengguna;
-
-		$produk = $this->Produk_model->getAll();
-		$data['produk'] = $produk;
-		
-		$dtbarangmasuk = $this->Lapbarangmasuk_model->getAllDetail();
-		$data['dtbarangmasuk'] = $dtbarangmasuk;
+        $data["dtlaporan"] = $this->db->query('SELECT * FROM view_laporanbarangmasuk')->result();
 
         // Menampilkan tampilan
         $this->load->view('layout/admin_header', $data);
@@ -41,29 +33,26 @@ class Lapbarangmasuk extends CI_Controller
         $this->load->view('layout/admin_footer');
     }
 
-	public function print()	{
-		$this->load->library('dompdf_gen');
 
-		$data["trbarangmasuk"] = $this->Lapbarangmasuk_model->getAll();
-		
-		$pengguna = $this->Pengguna_model->getAll();
-		$data['pengguna'] = $pengguna;
+    public function print_pdf()
+    {
+        // panggil library yang kita buat sebelumnya yang bernama pdfgenerator
+        $this->load->library('pdfgenerator');
 
-		$produk = $this->Produk_model->getAll();
-		$data['produk'] = $produk;
-		
-		$dtbarangmasuk = $this->Lapbarangmasuk_model->getAllDetail();
-		$data['dtbarangmasuk'] = $dtbarangmasuk;
+        // title dari pdf
+        $this->data['title_pdf'] = 'Laporan Barang Masuk';
 
-        $this->load->view('laporan/lapbarangmasuk_pdf', $data);
+        // filename dari pdf ketika didownload
+        $file_pdf = 'laporan_barang_masuk_2021';
+        // setting paper
+        $paper = 'A4';
+        //orientasi paper potrait / landscape
+        $orientation = "portrait";
 
-		$paper_size = 'A4';
-		$orientation = 'landscape';
-		$html = $this->output->get_output();
-		$this->dompdf->set_paper($paper_size, $orientation);
+        $data["dtlaporan"] = $this->db->query('SELECT * FROM view_laporanbarangmasuk')->result();
+        $html = $this->load->view('laporan/pdf_laporanbarangmasuk', $data, true);
 
-		$this->dompdf->load_html($html);
-		$this->dompdf->render();
-		$this->dompdf->stream("laporan_barangmasuk.pdf", array('Attachment' =>0));
-	}
+        // run dompdf
+        $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+    }
 }

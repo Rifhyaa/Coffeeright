@@ -51,8 +51,10 @@ class Auth extends CI_Controller
                     // Otorisasi Role
                     if ($user['id_role'] == 1) {
                         redirect('user/dashboard');
-                    } else {
+                    } else if ($user['id_role'] == 2) {
                         redirect('customer');
+                    } else {
+                        redirect('kurir');
                     }
                     // =========================================
                 } else {

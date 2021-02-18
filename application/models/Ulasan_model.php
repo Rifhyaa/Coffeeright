@@ -14,17 +14,17 @@ class Ulasan_model extends CI_Model
                 'field' => 'deskripsi_ulasan',
                 'label' => 'Deskripsi',
                 'rules' => 'required'
-            ],
-            [
-                'field' => 'id_pengguna',
-                'label' => 'Pengguna',
-                'rules' => 'required'
-            ],
-            [
-                'field' => 'id_produk',
-                'label' => 'Produk',
-                'rules' => 'required'
             ]
+            // [
+            //     'field' => 'id_pengguna',
+            //     'label' => 'Pengguna',
+            //     'rules' => 'required'
+            // ],
+            // [
+            //     'field' => 'id_produk',
+            //     'label' => 'Produk',
+            //     'rules' => 'required'
+            // ]
         ];
     }
 
@@ -65,6 +65,17 @@ class Ulasan_model extends CI_Model
         return $this->db->get_where($this->_table3, ["status" => 1])->result();
     }
 
+    public function getUlasanByProduk($id)
+    {
+        return $this->db->get_where($this->_table, ["id_produk" => $id])->result();
+    }
+
+    public function getTotalUlasanByProduk($id)
+    {
+        $data = $this->db->query("SELECT COUNT(id_ulasan) AS total FROM msulasan WHERE id_produk = $id")->row();
+        return $data->total;
+    }
+
     /**
      * Simpan data kategori di db
      */
@@ -74,7 +85,7 @@ class Ulasan_model extends CI_Model
         $post = $this->input->post();
 
         $this->deskripsi_ulasan = $post["deskripsi_ulasan"];
-        $this->id_pengguna = $post["id_pengguna"];
+        $this->id_pengguna = $this->session->userdata('id_pengguna');
         $this->id_produk = $post["id_produk"];
 
         return $this->db->insert($this->_table, $this);

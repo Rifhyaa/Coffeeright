@@ -2925,6 +2925,10 @@ textarea.form-control {
   margin-top: 0.25rem;
 }
 
+.form-rounded {
+  border-radius: 1rem;
+}
+
 .form-row {
   display: flex;
   flex-wrap: wrap;
@@ -3253,7 +3257,11 @@ a.btn.disabled,
 fieldset:disabled a.btn {
   pointer-events: none;
 }
-
+.btn-prime {
+  background-color: rgba(221, 161, 94, 0.9); 
+  color:white;
+  border-color: #a86f00;
+}
 .btn-primary {
   color: #fff;
   background-color: #0061f2;
@@ -19919,7 +19927,6 @@ i-feather svg {
 .step-danger-soft .step-item.active a::before {
   border-color: #f1e0e3;
 }
-
 .img-account-profile {
   height: 10rem;
 }

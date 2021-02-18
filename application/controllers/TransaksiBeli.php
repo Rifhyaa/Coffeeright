@@ -8,6 +8,7 @@ class TransaksiBeli extends CI_Controller
         $this->load->model("TransBeli_model");
         $this->load->model("Keranjang_model");
         $this->load->model("DetilBeli_model");
+        $this->load->model("Produk_model");
         $this->load->library('form_validation');
 
         // Cek User sudah login belum
@@ -34,10 +35,11 @@ class TransaksiBeli extends CI_Controller
         $data['detilTransaksi'] = $this->DetilBeli_model->getAll();
 
         // Set data product
-        $data['produk'] = $this->DetilBeli_model->getProductByDetil();
+        $data['produk'] = $this->Produk_model->getAll();
 
         // Menampilkan tampilan
         $this->load->view('layout/cust_header', $data);
+        $this->load->view('layout/cust_breadcrumb', $data);
         $this->load->view('transaksiBeli/list', $data);
         $this->load->view('layout/cust_footer');
     }
@@ -57,17 +59,54 @@ class TransaksiBeli extends CI_Controller
         $data['keranjang'] = $this->Keranjang_model->getByUser($this->session->userdata('id_pengguna'));
 
         // Set data product
-        $data['produk'] = $this->Keranjang_model->getProductByKeranjang($this->session->userdata('id_pengguna'));
+        $data['produk'] = $this->Produk_model->getAll();
 
         // Set total keranjang + ongkir
-        $data['total'] = $this->TransBeli_model->getTotal($this->session->userdata('id_pengguna'));
+        $data['total'] = $this->Keranjang_model->getTotalKeranjang($this->session->userdata('id_pengguna'));
 
         // Set ongkir
         $data['ongkir'] = $this->TransBeli_model->getOngkir($this->session->userdata('id_pengguna'));
 
         // Menampilkan tampilan
         $this->load->view('layout/cust_header', $data);
+        $this->load->view('layout/cust_breadcrumb', $data);
         $this->load->view('transaksiBeli/Checkout', $data);
+        $this->load->view('layout/cust_footer');
+    }
+
+    public function detail($id)
+    {
+        // Set session
+        $data['user'] = $this->db->get_where('mspengguna', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['pengguna'] = $this->db->get_where('mspengguna', ['id_pengguna' => $this->session->userdata('id_pengguna')])->row();
+
+
+        // Set title page
+        $data['title'] = 'Detail Belanja';
+
+        // Set data pembelian
+        $data["transaksiBeli"] = $this->TransBeli_model->getById($id);
+
+        // Set detil pembelian
+        $data['detilTransaksi'] = $this->DetilBeli_model->getAll();
+
+        //set data pengiriman
+        $data['transaksiKirim'] = $this->TransBeli_model->getPengirimanByid($id);
+
+        // Set data product
+        $data['produk'] = $this->Produk_model->getAll();
+
+        // Set total keranjang + ongkir
+        $data['total'] = $this->TransBeli_model->getTotalById($id);
+
+        // Set ongkir
+        $data['ongkir'] = $this->TransBeli_model->getOngkir($this->session->userdata('id_pengguna'));
+
+        // Menampilkan tampilan
+        $this->load->view('layout/cust_header', $data);
+        $this->load->view('layout/cust_breadcrumb', $data);
+        $this->load->view('transaksiBeli/detail', $data);
         $this->load->view('layout/cust_footer');
     }
 

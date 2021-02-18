@@ -161,14 +161,14 @@
                             <!-- Sidenav Heading (Laporan)-->
                             <div class="sidenav-menu-heading">Laporan</div>
                             <!-- Sidenav Link (Laporan Peminjaman)-->
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="<?= site_url('lapbarangkeluar') ?>">
                                 <div class="nav-link-icon"><i class="fas fa-fw fa-chart-bar"></i></div>
-                                Penjualan
+                                Laporan Barang Keluar
                             </a>
                             <!-- Sidenav Link (Laporan Pengadaan)-->
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="<?= site_url('lapbarangmasuk') ?>">
                                 <div class="nav-link-icon"><i class="fas fa-fw fa-chart-line"></i></div>
-                                Barang Masuk
+                                Laporan Barang Masuk
                             </a>
 
                         <?php else : ?>
@@ -204,10 +204,10 @@
                             Profil Saya
                         </a>
                         <!-- Sidenav Link (User)-->
-                        <a class="nav-link <?= ($this->uri->segment(2) == 'security' ? 'active' : '') ?>" href="<?= base_url('user/security'); ?>">
+                        <!-- <a class="nav-link <?= ($this->uri->segment(2) == 'security' ? 'active' : '') ?>" href="<?= base_url('user/security'); ?>">
                             <div class="nav-link-icon"><i class="fas fa-fw fa-key"></i></div>
                             Keamanan
-                        </a>
+                        </a> -->
                     </div>
                 </div>
                 <!-- Sidenav Footer-->
