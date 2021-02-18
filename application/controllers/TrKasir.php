@@ -131,7 +131,7 @@ class TrKasir extends CI_Controller
             $produk->kurangStok($items['id'], $dataproduk->stok_produk, $items['qty']);
         }
         $this->cart->destroy();
-        redirect(site_url('user'));
+        redirect(site_url('trkasir'));
     }
 
     public function add()

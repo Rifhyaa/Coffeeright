@@ -43,7 +43,7 @@
                                         <tr>
                                             <td> <?= $num++; ?> </td>
                                             <td> <?= $produk->nama_produk; ?> </td>
-                                            <td> <?= substr($produk->deskripsi_produk, 0, 110); ?> </td>
+                                            <td> <?= substr($produk->deskripsi_produk, 0, 70)."..."; ?> </td>
                                             <td>
                                                 <?php foreach ($subkategori as $row) {
                                                     if ($produk->id_subkategori == $row->id_subkategori) {
@@ -52,7 +52,7 @@
                                                 }
                                                 ?>
                                             </td>
-                                            <td class="text-right"> Rp<?= $produk->harga_produk; ?> </td>
+                                            <td class="text-right"> Rp<?= number_format($produk->harga_produk); ?> </td>
                                             <td class="text-right"> <?= $produk->stok_produk; ?> </td>
                                             <td class="text-center min-wd-50">
                                                 <a href="<?php echo site_url('produk/edit/' . $produk->id_produk) ?>" data-toggle="tooltip" title="Ubah" class="btn btn-datatable btn-icon btn-transparent-dark mr-2" te><i data-feather="edit"></i></a>

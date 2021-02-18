@@ -20,31 +20,35 @@
                 </div>
                 <div class="card-body">
                     <form action="<?php echo site_url('barangmasuk/saveData') ?>" method="post" enctype="multipart/form-data">
-                        <div class="col-md-4 order-md-2 mb-4">
-                            <h4 class="d-flex justify-content-between align-items-center mb-3">
-                                <span class="text-muted">Keranjang Barang Masuk</span>
-                            </h4>
-                            <ul class="list-group mb-3">
+                        <div class="mb-4 col-md-7 small">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>Nama Barang</th>
+                                    <th>Jumlah</th>
+                                </tr>
+            
                                 <?php if ($this->cart->total_items() > 0) {
                                     foreach ($this->cart->contents() as $item) { ?>
-                                        <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                            <div>
-                                                <h6 class="my-0"><?php echo $item["name"]; ?></h6>
-                                                <small class="text-muted"><?php echo $item["qty"]; ?></small>
-                                            </div>
-                                        </li>
+                                    <tr>
+                                        <td><?php echo $item["name"]; ?></td>
+                                        <td><?php echo $item["qty"]; ?></td>
+                                    </tr>
                                     <?php }
                                 } else { ?>
-                                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                        <p>Keranjang Kosong...</p>
-                                    </li>
+                                    <tr>
+                                        <td>Keranjang Kosong</td>
+                                        <td></td>
+                                    </tr> 
                                 <?php } ?>
+                 
+                            </table>
+                            <ul class="list-group mb-3">
                                 <li class="list-group-item d-flex justify-content-between">
                                     <span><strong>Total</strong></span>
                                     <strong><?php echo $this->cart->total_items(); ?></strong>
                                 </li>
                             </ul>
-                            <a href="<?php echo base_url('barangmasuk/'); ?>" class="btn btn-block btn-info">Tambah Produk</a>
+                            <a href="<?php echo base_url('barangmasuk/'); ?>" class="btn btn-info">Tambah Produk</a>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Vendor<span style="color: red">*</span></label>

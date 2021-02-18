@@ -25,29 +25,6 @@
         <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle"><i data-feather="menu"></i></button>
         <!-- Navbar Items-->
         <ul class="navbar-nav align-items-center ml-auto">
-            <!-- Alerts Dropdown-->
-            <li class="nav-item dropdown no-caret d-none d-sm-block mr-3 dropdown-notifications">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="bell"></i></a>
-                <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownAlerts">
-                    <h6 class="dropdown-header dropdown-notifications-header">
-                        <i class="mr-2" data-feather="bell"></i>
-                        Alerts Center
-                    </h6>
-                    <a class="dropdown-item dropdown-notifications-footer" href="#!">View All Alerts</a>
-                </div>
-            </li>
-            <!-- Messages Dropdown-->
-            <li class="nav-item dropdown no-caret d-none d-sm-block mr-3 dropdown-notifications">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="mail"></i></a>
-                <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownMessages">
-                    <h6 class="dropdown-header dropdown-notifications-header">
-                        <i class="mr-2" data-feather="mail"></i>
-                        Message Center
-                    </h6>
-                    <!-- Footer Link-->
-                    <a class="dropdown-item dropdown-notifications-footer" href="#!">Read All Messages</a>
-                </div>
-            </li>
             <div class="topbar-divider d-none d-sm-block"></div>
             <!-- User Dropdown-->
             <li class="nav-item dropdown no-caret mr-3 mr-lg-0 dropdown-user">

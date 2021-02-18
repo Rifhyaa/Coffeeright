@@ -1,13 +1,16 @@
 <div id="layoutSidenav_content">
     <main>
-        <header class="bg-white border-bottom">
-            <div class="container-fluid">
-                <div class="form-group pt-3">
-                    <div class="mt-2 mb-2">
-                        <h4 class="text-secondary"><?= $title; ?></h4>
-                    </div>
-                </div>
-            </div>
+        <header>
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="main-breadcrumb">
+                <ol class="breadcrumb bg-white">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item">User</li>
+                    <li class="breadcrumb-item">Kasir</li>
+                    <li class="breadcrumb-item text-blue" aria-current="page">Konfirmasi</li>
+                </ol>
+            </nav>
+            <!-- /Breadcrumb -->
         </header>
         <!-- Main page content-->
         <div class="container mt-4">
@@ -17,30 +20,40 @@
                 </div>
                 <div class="card-body">
                     <form action="<?php echo site_url('trkasir/cobasave') ?>" method="post" enctype="multipart/form-data">
-                    <div class="col-md-4 order-md-2 mb-4">
-                    <h4 class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="text-muted">Keranjang Pembelian</span>
-                    </h4>
+                    <div class="mb-4 col-md-7 small">
+                        <table class="table table-hover">
+                            <tr>
+                                <th>Nama Barang</th>
+                                <th>Harga</th>
+                                <th>Jumlah</th>
+                                <th>Subtotal</th>
+                            </tr>
+        
+                            <?php if ($this->cart->total_items() > 0) {
+                                foreach ($this->cart->contents() as $item) { ?>
+                                <tr>
+                                    <td><?php echo $item["name"]; ?></td>
+                                    <td><?php echo 'Rp'.number_format($item["price"]); ?></td>
+                                    <td><?php echo $item["qty"]; ?></td>
+                                    <td><?php echo 'Rp'.number_format($item["subtotal"]); ?></td>
+                                </tr>
+                                <?php }
+                            } else { ?>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Keranjang Kosong</td>
+                                    <td></td>
+                                </tr> 
+                            <?php } ?>
+                        </table>
                     <ul class="list-group mb-3">
-                        <?php if($this->cart->total_items() > 0){ foreach($this->cart->contents() as $item){ ?>
-                        <li class="list-group-item d-flex justify-content-between lh-condensed">
-                            <div>
-                                <h6 class="my-0"><?php echo $item["name"]; ?></h6>
-                                <small class="text-muted"><?php echo 'Rp'.$item["price"]; ?>(<?php echo $item["qty"]; ?>)</small>
-                            </div>
-                            <span class="text-muted"><?php echo 'Rp'.$item["subtotal"]; ?></span>
-                        </li>
-                        <?php } }else{ ?>
-                        <li class="list-group-item d-flex justify-content-between lh-condensed">
-                            <p>Keranjang Kosong...</p>
-                        </li>
-                        <?php } ?>
                         <li class="list-group-item d-flex justify-content-between">
                             <span><strong>Total</strong></span>
                             <strong><?php echo 'Rp'.$this->cart->total(); ?></strong>
                         </li>
                     </ul>
-                    <a href="<?php echo base_url('trkasir/'); ?>" class="btn btn-block btn-info">Tambah Produk</a>
+                    <a href="<?php echo base_url('trkasir/'); ?>" class="btn btn-info">Tambah Produk</a>
                     
                     <div class="form-group mt-5">
                             <label class="control-label">Total Bayar<span style="color: red">*</span></label>

@@ -23,8 +23,8 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th style="height:20px;width:180px;">Nama</th>
-                                            <th style="height:20px;width:100px;">Sub Kategori</th>
+                                            <th>Nama</th>
+                                            <th>Sub Kategori</th>
                                             <th>Stok</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -34,8 +34,8 @@
                                         <?php foreach ($msproduk as $produk) : ?>
                                             <tr>
                                                 <td> <?= $num++; ?> </td>
-                                                <td style="height:20px;width:180px;"> <?= $produk->nama_produk; ?> </td>
-                                                <td style="height:20px;width:100px;">
+                                                <td> <?= $produk->nama_produk; ?> </td>
+                                                <td>
                                                     <?php foreach ($subkategori as $row) {
                                                         if ($produk->id_subkategori == $row->id_subkategori) {
                                                             echo $row->deskripsi_subkategori;
@@ -60,7 +60,7 @@
                         <div class="card-header">Keranjang Produk</div>
                         <div class="card-body">
                             <div class="form-group">
-                                <a href="<?php echo site_url('barangkeluar/add') ?>" title="Tambah" class="btn btn-outline-secondary">Selanjutnya</i></a>
+                                <a href="<?php echo site_url('barangkeluar/add') ?>" title="Tambah" class="btn btn-primary">Selanjutnya</i></a>
                             </div>
                             <div class="datatable">
                                 <table class="table table-hover" width="100%" cellspacing="0">

@@ -47,9 +47,9 @@
                                                 }
                                                 ?>
                                             </td>
-                                            <td> <?= $tr->total_harga; ?> </td>
+                                            <td> <?= 'Rp'.number_format($tr->total_harga); ?> </td>
                                             <td class="text-center min-wd-50">
-                                                <a href="<?php echo site_url('kurir/simpan_konfirmasi/' . $tr->id_trpembelian) ?>" onclick="return confirm('Apa anda yakin barang sudah diterima pembeli');" data-toggle="tooltip" title="Konfirmasi Barang Sudah Diterima Pembeli" class="btn btn-datatable btn-icon btn-transparent-dark mr-2" te><i data-feather="check-square"></i></a>
+                                                <a href="<?php echo site_url('kurir/simpan_konfirmasi/' . $tr->id_trpembelian) ?>" data-toggle="tooltip" title="Konfirmasi Barang Sudah Diterima Pembeli" class="btn btn-datatable btn-icon btn-transparent-dark mr-2" te><i data-feather="check-square"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

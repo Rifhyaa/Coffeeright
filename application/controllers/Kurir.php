@@ -164,13 +164,32 @@ class Kurir extends CI_Controller
 
     public function simpan_konfirmasi($id = null)
     {
+        // Set session
+        $data['user'] = $this->db->get_where('mspengguna', ['email' => $this->session->userdata('email')])->row_array();
+
+        // Set title page
+        $data['title'] = 'Konfirmasi Pengiriman';
+
+        $data['trans'] = $id;
+
+        // Menampilkan tampilan
+        $this->load->view('layout/admin_header', $data);
+        $this->load->view('kurir/commit', $data);
+        $this->load->view('layout/admin_footer');
+    }
+
+    public function commit($id = null, $keterangan = null)
+    {
+        $post = $this->input->post();
+
         // Mengganti Data Kurir dan Status Pengiriman
-        $this->Transaksi_model->changeStatus(3, $id);
+        $this->Transaksi_model->changeStatus(3, $post["id"]);
 
         $data = array(
-            'id_transaksi' => $id,
+            'id_transaksi' => $post["id"],
             'status' => 'Paket telah sampai ke alamat pembeli',
             'creadate' => date('Y-m-d H:i:s'),
+            'keterangan' => $post["keterangan"],
             'id_kurir' => $this->session->userdata('id_pengguna')
         );
 

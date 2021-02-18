@@ -4,7 +4,7 @@
             <br>
             <div class="card shadow">
                 <div class="card-header">
-                    <h4><b>Status Pesanan</b></h4>
+                    <b>Status Pesanan</b>
                 </div>
                 <div class="card-body">
                     <?php foreach ($transaksiKirim as $send) : ?>
@@ -51,7 +51,7 @@
             <br>
             <div class="card shadow">
                 <div class="card-header">
-                    <h4><b>Detail Pengiriman</b></h4>
+                    <b>Detail Pengiriman</b>
                 </div>
                 <div class="card-body">
 
@@ -89,7 +89,7 @@
             <br>
             <div class="card shadow">
                 <div class="card-header">
-                    <h4><b>Produk Pesanan</b></h4>
+                    <b>Produk Pesanan</b>
                 </div>
                 <div class="card-body">
                     <div class="container">
@@ -134,10 +134,10 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-8">
-                                <h5><b>Total Belanjaan</b></h5>
+                                <b>Total Belanjaan</b>
                             </div>
                             <div class="col-lg text-align-right">
-                                <h5><b>Rp. <?php echo $total ?></b></h5>
+                                <b>Rp. <?php echo number_format($total); ?></b>
                                 <input name="total_harga" value="<?php echo $total ?>" type="hidden" />
                                 <br>
                             </div>

@@ -1,32 +1,33 @@
 
     <div id="layoutSidenav_content">
     <main>
-        <header class="bg-white border-bottom">
-            <div class="container-fluid">
-                <div class="form-group pt-3">
-                    <div class="mt-2 mb-2">
-                        <h4 class="text-secondary"><?= $title; ?></h4>
-                    </div>
-                </div>
-            </div>
+        <header>
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="main-breadcrumb">
+                <ol class="breadcrumb bg-white">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item">User</li>
+                    <li class="breadcrumb-item text-blue" aria-current="page">Kasir</li>
+                </ol>
+            </nav>
+            <!-- /Breadcrumb -->
         </header>
         <!-- Main page content-->
-        <div class="container-fluid mt-4 d-flex justify content between">
-            <div class="card mb-5">
-                <div class="card-header">
-                    Data Produk
-                </div>
-                <div class="card-body">
-                    <div class="datatable">
-                        <table class="table table-bordered table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
+        <div class="container-fluid mt-4">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-header">Daftar Produk</div>
+                        <div class="card-body">
+                            <div class="datatable">
+                                <table class="table table-bordered table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th style="height:20px;width:180px;">Nama</th>
-                                    <th style="height:20px;width:400px;">Deskripsi</th>
-                                    <th style="height:20px;width:100px;">Sub Kategori</th>
+                                    <th style="width:50px;">No</th>
+                                    <th>Nama</th>
+                                    <th>Sub Kategori</th>
                                     <th>Stok</th>
-                                    <th>Aksi</th>
+                                    <th style="width:50px;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,9 +35,8 @@
                                 <?php foreach ($msproduk as $produk) : ?>
                                     <tr>
                                         <td> <?= $num++; ?> </td>
-                                        <td style="height:20px;width:180px;"> <?= $produk->nama_produk; ?> </td>
-                                        <td style="height:20px;width:400px;"> <?= $produk->deskripsi_produk; ?> </td>
-                                        <td style="height:20px;width:100px;">
+                                        <td> <?= $produk->nama_produk; ?> </td>
+                                        <td>
                                             <?php foreach ($subkategori as $row) {
                                                 if ($produk->id_subkategori == $row->id_subkategori) {
                                                     echo $row->deskripsi_subkategori;
@@ -51,27 +51,29 @@
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
-                        </table>
-                    </div>
-
-                    <!-- tabel temp -->
-
-                    <div class="card mt-4">
-                        <div class="card-header">
-                            Detail Pembayaran
+                                </table>
+                            </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-header">Keranjang Produk</div>
                         <div class="card-body">
+                            <div class="form-group">
+                                <a href="<?php echo site_url('trkasir/add') ?>" title="Tambah" class="btn btn-primary">Selanjutnya</i></a>
+                            </div>
                             <div class="datatable">
-                                <table class="table table-bordered table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-hover" width="100%" cellspacing="0">
                                     <thead>
-                                        <tr>
-                                            <th style="height:20px;width:300px;">Nama Produk</th>
+                                        <tr class="text-secondary">
+                                            <th>Nama Produk</th>
                                             <th>Qty</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $i = 1; ?>
+                                    <?php $i = 1; ?>
                                         <?php foreach ($this->cart->contents() as $items) : ?>
                                         <?php echo form_hidden($i . '[rowid]', $items['rowid']); ?>
                                         <tr>
@@ -99,13 +101,10 @@
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
-                                <!-- <?= var_dump($this->cart->contents()); ?> -->
-                                <a href="<?php echo site_url('trkasir/add')?>" title="Tambah" class="btn btn-primary">Selanjutnya</i></a>
                             </div>
                         </div>
-                    </div>    
-
+                    </div>
                 </div>
-            </div>           
+            </div>
         </div>
     </main>
