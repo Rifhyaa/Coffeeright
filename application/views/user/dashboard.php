@@ -169,7 +169,7 @@
                                             <td><?= $poffline; ?></td>
                                         </tr>
                                         <tr>
-                                            <td>1</td>
+                                            <td>2</td>
                                             <td>Pemesanan Online</td>
                                             <td><?= $ponline; ?></td>
                                         </tr>
